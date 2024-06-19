@@ -8,9 +8,9 @@ namespace ShootEmUp
     {
         [SerializeField] private int hitPoints;
 
-        public bool IsHitPointsExists()
+        public bool IsHitPointsZeroOrLess()
         {
-            return hitPoints > 0;
+            return hitPoints <= 0;
         }
 
         public void TakeDamage(int damage)

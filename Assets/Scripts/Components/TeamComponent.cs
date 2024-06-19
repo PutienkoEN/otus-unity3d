@@ -8,7 +8,10 @@ namespace ShootEmUp
     {
         [SerializeField] private Team team;
 
-        public Team Team => team;
+        public bool SameTeam(Team otherTeam)
+        {
+            return team == otherTeam;
+        }
     }
 
     public enum Team

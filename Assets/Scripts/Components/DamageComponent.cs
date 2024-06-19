@@ -9,21 +9,8 @@ namespace Components
     {
         public void DealDamage(Bullet bullet, GameObject gameObject)
         {
-            var unit = gameObject.GetComponent<Unit>();
-            if (unit)
-            {
-                DealDamage(bullet, unit);
-            }
-        }
-
-        private static void DealDamage(Bullet bullet, Unit other)
-        {
-            if (bullet.Team == other.GetTeam())
-            {
-                return;
-            }
-
-            other.TakeDamage(bullet.Damage);
+            var damageable = gameObject.GetComponent<IDamageable>();
+            damageable?.TakeDamage(bullet.Damage, bullet.Team);
         }
     }
 }
