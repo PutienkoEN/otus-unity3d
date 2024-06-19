@@ -43,8 +43,8 @@ namespace Pool
 
         private T GetOrCreate()
         {
-            var component = objects.Dequeue();
-            return component != null ? actionToCreate?.Invoke() : component;
+            var hadObject = objects.TryDequeue(out var component);
+            return hadObject ? component : actionToCreate?.Invoke();
         }
 
         public void Release(T item)
