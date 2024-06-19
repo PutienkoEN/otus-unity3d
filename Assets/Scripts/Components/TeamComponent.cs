@@ -1,15 +1,19 @@
+using System;
 using UnityEngine;
 
 namespace ShootEmUp
 {
-    public sealed class TeamComponent : MonoBehaviour
+    [Serializable]
+    public sealed class TeamComponent
     {
-        public bool IsPlayer
-        {
-            get { return this.isPlayer; }
-        }
-        
-        [SerializeField]
-        private bool isPlayer;
+        [SerializeField] private Team team;
+
+        public Team Team => team;
+    }
+
+    public enum Team
+    {
+        Player,
+        Enemy
     }
 }

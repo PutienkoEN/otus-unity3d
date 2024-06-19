@@ -1,20 +1,34 @@
+using System;
 using UnityEngine;
 
 namespace ShootEmUp
 {
-    public sealed class WeaponComponent : MonoBehaviour
+    [Serializable]
+    public sealed class WeaponComponent
     {
-        public Vector2 Position
+        [SerializeField] private BulletSpawner bulletSpawner;
+        [SerializeField] private BulletConfig bulletConfig;
+
+        [SerializeField] private Transform firePoint;
+
+        public void Initialize(BulletSpawner bulletSpawner)
         {
-            get { return this.firePoint.position; }
+            this.bulletSpawner = bulletSpawner;
         }
 
-        public Quaternion Rotation
+        public void Attack(Transform target)
         {
-            get { return this.firePoint.rotation; }
-        }
+            var position = new Vector2(firePoint.position.x, firePoint.position.y);
+            var direction = (new Vector2(target.position.x, target.position.y) - position).normalized;
 
-        [SerializeField]
-        private Transform firePoint;
+            var bulletData = new BulletSpawner.BulletData
+            {
+                BulletConfig = bulletConfig,
+                Position = position,
+                Velocity = direction * bulletConfig.speed
+            };
+
+            bulletSpawner.SpawnBullet(bulletData);
+        }
     }
 }
