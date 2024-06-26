@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public sealed class LevelBackground : MonoBehaviour
+    public class LevelBackground : MonoBehaviour
     {
         [SerializeField] private Params positions;
 
@@ -11,7 +11,7 @@ namespace ShootEmUp
         private float startPositionY;
         private float endPositionY;
         private float movingSpeedY;
-        
+
         private float positionX;
         private float positionZ;
 
@@ -30,7 +30,7 @@ namespace ShootEmUp
         private void FixedUpdate()
         {
             var position = myTransform.position;
-            
+
             if (position.y <= endPositionY)
             {
                 myTransform.position = new Vector3(
@@ -48,7 +48,7 @@ namespace ShootEmUp
         }
 
         [Serializable]
-        public sealed class Params
+        public class Params
         {
             [SerializeField] public float startPositionY;
             [SerializeField] public float endPositionY;

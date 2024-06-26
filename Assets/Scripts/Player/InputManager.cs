@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public sealed class InputManager : MonoBehaviour
+    public class InputManager : MonoBehaviour
     {
         public Action<Vector2> OnMoveInput;
         public Action OnShootInput;

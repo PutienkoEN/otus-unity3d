@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public sealed class GameManager : MonoBehaviour
+    public class GameManager : MonoBehaviour
     {
         private GameState gameState;
 

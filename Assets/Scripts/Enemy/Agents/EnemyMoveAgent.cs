@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public sealed class EnemyMoveAgent : MonoBehaviour
+    public class EnemyMoveAgent : MonoBehaviour
     {
         private Transform destination;
         private Transform currentPosition;

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ShootEmUp
 {
     [Serializable]
-    public sealed class HitPointsComponent
+    public class HitPointsComponent
     {
         [SerializeField] private int hitPoints;
 

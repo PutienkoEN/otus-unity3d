@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public sealed class EnemyAttackAgent : MonoBehaviour
+    public class EnemyAttackAgent : MonoBehaviour
     {
         [SerializeField] private float countdown;
 
         private Unit target;
         private Unit attacker;
-        
+
         private float currentTime;
         private bool canAttack;
 

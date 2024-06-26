@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ShootEmUp
 {
     [Serializable]
-    public sealed class MoveComponent
+    public class MoveComponent
     {
         [SerializeField] private Rigidbody2D rigidbody2D;
         [SerializeField] private float speed = 5.0f;

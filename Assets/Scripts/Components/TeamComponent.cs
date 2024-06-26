@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ShootEmUp
 {
     [Serializable]
-    public sealed class TeamComponent
+    public class TeamComponent
     {
         [SerializeField] private Team team;
 

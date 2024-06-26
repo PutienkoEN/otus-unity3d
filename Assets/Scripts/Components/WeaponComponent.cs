@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ShootEmUp
 {
     [Serializable]
-    public sealed class WeaponComponent
+    public class WeaponComponent
     {
         [SerializeField] private BulletSpawner bulletSpawner;
         [SerializeField] private BulletConfig bulletConfig;

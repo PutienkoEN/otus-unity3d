@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public sealed class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         [SerializeField] private GameManager gameManager;
         [SerializeField] private InputManager inputManager;
