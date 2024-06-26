@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="934704b9-af6f-4a38-83a2-54321aa73491" name="Changes" comment="Refactor weapon component" />
+    <list default="true" id="934704b9-af6f-4a38-83a2-54321aa73491" name="Changes" comment="Removed magic number from EnemyMoveAgent" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +172,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719395001223</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Removed magic number from EnemyMoveAgent">
+      <option name="closed" value="true" />
+      <created>1719395355171</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1719395355171</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,6 +214,7 @@
     <MESSAGE value="Remove sealed from classes" />
     <MESSAGE value="Fix damage component" />
     <MESSAGE value="Refactor weapon component" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor weapon component" />
+    <MESSAGE value="Removed magic number from EnemyMoveAgent" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed magic number from EnemyMoveAgent" />
   </component>
 </project>
