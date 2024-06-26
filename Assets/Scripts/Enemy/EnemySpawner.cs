@@ -23,13 +23,36 @@ namespace ShootEmUp
         {
             var enemy = enemyPool.Get();
 
+            InitializeEnemyPosition(enemy);
+            InitializeMoveAgent(enemy);
+            InitializeAttackAgent(enemy);
+        }
+
+        private void InitializeEnemyPosition(Unit enemy)
+        {
             var spawnPosition = enemyPositions.RandomSpawnPosition();
             enemy.transform.position = spawnPosition.position;
+        }
+
+        private void InitializeMoveAgent(Unit enemy)
+        {
+            if (!enemy.TryGetComponent(out EnemyMoveAgent moveAgent))
+            {
+                throw new MissingComponentException($"Component {typeof(EnemyMoveAgent)} for {enemy} was not found.");
+            }
 
             var attackPosition = enemyPositions.RandomAttackPosition();
-            enemy.GetComponent<EnemyMoveAgent>()
-                .Initialize(enemy.transform, attackPosition.transform, targetReachedMagnitude);
-            enemy.GetComponent<EnemyAttackAgent>().Initialize(enemy, character);
+            moveAgent.Initialize(enemy.transform, attackPosition.transform, targetReachedMagnitude);
+        }
+
+        private void InitializeAttackAgent(Unit enemy)
+        {
+            if (!enemy.TryGetComponent(out EnemyAttackAgent attackAgent))
+            {
+                throw new MissingComponentException($"Component {typeof(EnemyAttackAgent)} for {enemy} was not found.");
+            }
+
+            attackAgent.Initialize(enemy, character);
         }
     }
 }
