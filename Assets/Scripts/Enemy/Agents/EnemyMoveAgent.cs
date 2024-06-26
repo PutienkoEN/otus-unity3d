@@ -9,13 +9,15 @@ namespace ShootEmUp
         private Transform currentPosition;
 
         private bool isReached;
+        private float targetReachedMagnitude;
 
         public Action OnTargetReached;
         public Action<Vector2> OnMove;
 
-        public void Initialize(Transform currentPosition, Transform destination)
+        public void Initialize(Transform currentPosition, Transform destination, float targetReachedMagnitude)
         {
             isReached = false;
+            this.targetReachedMagnitude = targetReachedMagnitude;
             this.currentPosition = currentPosition;
             this.destination = destination;
         }
@@ -29,7 +31,7 @@ namespace ShootEmUp
             }
 
             var vector = (Vector2)destination.position - (Vector2)currentPosition.position;
-            if (vector.magnitude <= 0.25f)
+            if (vector.magnitude <= targetReachedMagnitude)
             {
                 isReached = true;
                 return;

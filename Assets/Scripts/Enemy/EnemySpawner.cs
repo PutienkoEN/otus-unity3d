@@ -8,6 +8,7 @@ namespace ShootEmUp
         [SerializeField] private EnemyPool enemyPool;
         [SerializeField] private EnemyPositions enemyPositions;
         [SerializeField] private Unit character;
+        [SerializeField] private float targetReachedMagnitude;
 
         private IEnumerator Start()
         {
@@ -26,7 +27,8 @@ namespace ShootEmUp
             enemy.transform.position = spawnPosition.position;
 
             var attackPosition = enemyPositions.RandomAttackPosition();
-            enemy.GetComponent<EnemyMoveAgent>().Initialize(enemy.transform, attackPosition.transform);
+            enemy.GetComponent<EnemyMoveAgent>()
+                .Initialize(enemy.transform, attackPosition.transform, targetReachedMagnitude);
             enemy.GetComponent<EnemyAttackAgent>().Initialize(enemy, character);
         }
     }
