@@ -67,5 +67,10 @@ namespace ShootEmUp
         {
             enabled = false;
         }
+
+        public void OnGameResume()
+        {
+            enabled = true;
+        }
     }
 }

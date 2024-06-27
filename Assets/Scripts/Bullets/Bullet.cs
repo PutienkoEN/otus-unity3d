@@ -13,6 +13,9 @@ namespace ShootEmUp
         [SerializeField] private new Rigidbody2D rigidbody2D;
         [SerializeField] private SpriteRenderer spriteRenderer;
 
+        private Vector3 savedVelocity;
+        private float savedAngularVelocity;
+
         private void Awake()
         {
             IGameListener.Register(this);
@@ -38,7 +41,16 @@ namespace ShootEmUp
 
         public void OnGamePause()
         {
+            savedVelocity = rigidbody2D.velocity;
+            savedAngularVelocity = rigidbody2D.angularVelocity;
             rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+
+        public void OnGameResume()
+        {
+            rigidbody2D.constraints = RigidbodyConstraints2D.None;
+            rigidbody2D.velocity = savedVelocity;
+            rigidbody2D.angularVelocity = savedAngularVelocity;
         }
     }
 }

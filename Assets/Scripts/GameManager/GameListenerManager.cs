@@ -11,12 +11,20 @@ namespace ShootEmUp
             IGameListener.OnRegister += AddListener;
         }
 
-        public void TriggerPauseListeners()
+        public void TriggerGamePauseListeners()
         {
             gameListeners
                 .FindAll(listener => listener is IGamePauseListener)
                 .ConvertAll(listener => (IGamePauseListener)listener)
                 .ForEach(listener => listener.OnGamePause());
+        }
+
+        public void TriggerGameResumeListeners()
+        {
+            gameListeners
+                .FindAll(listener => listener is IGamePauseListener)
+                .ConvertAll(listener => (IGamePauseListener)listener)
+                .ForEach(listener => listener.OnGameResume());
         }
 
         private void AddListener(IGameListener gameListener)

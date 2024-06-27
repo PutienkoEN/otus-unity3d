@@ -25,8 +25,14 @@ namespace ShootEmUp
 
         public void PauseGame()
         {
-            gameListenerManager.TriggerPauseListeners();
+            gameListenerManager.TriggerGamePauseListeners();
             Debug.Log("Game paused!");
+        }
+
+        public void ResumeGame()
+        {
+            gameListenerManager.TriggerGameResumeListeners();
+            Debug.Log("Game resumed!");
         }
     }
 
