@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class LevelBackground : MonoBehaviour
+    public class LevelBackground : MonoBehaviour, IGamePauseListener
     {
         [SerializeField] private Params positions;
 
@@ -17,6 +17,8 @@ namespace ShootEmUp
 
         private void Awake()
         {
+            IGameListener.Register(this);
+            
             startPositionY = positions.startPositionY;
             endPositionY = positions.endPositionY;
             movingSpeedY = positions.movingSpeed;
@@ -45,6 +47,16 @@ namespace ShootEmUp
                 movingSpeedY * Time.fixedDeltaTime,
                 positionZ
             );
+        }
+
+        public void OnGamePause()
+        {
+            enabled = false;
+        }
+
+        public void OnGameResume()
+        {
+            enabled = true;
         }
 
         [Serializable]
