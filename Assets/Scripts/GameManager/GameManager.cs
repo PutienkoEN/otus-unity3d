@@ -6,6 +6,8 @@ namespace ShootEmUp
     {
         [SerializeField] private GameStartTimer gameStartTimer;
 
+        private GameListenerManager gameListenerManager = new();
+
         public void StartGame()
         {
             gameStartTimer.StartTimer(GameStartedAction);
@@ -23,6 +25,7 @@ namespace ShootEmUp
 
         public void PauseGame()
         {
+            gameListenerManager.TriggerPauseListeners();
             Debug.Log("Game paused!");
         }
     }

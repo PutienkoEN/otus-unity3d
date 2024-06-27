@@ -3,10 +3,15 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class InputManager : MonoBehaviour
+    public class InputManager : MonoBehaviour, IGamePauseListener
     {
         public Action<Vector2> OnMoveInput;
         public Action OnShootInput;
+
+        private void Awake()
+        {
+            IGameListener.Register(this);
+        }
 
         private void Update()
         {
@@ -39,6 +44,11 @@ namespace ShootEmUp
         {
             var directionWithDeltaTime = direction * Time.fixedDeltaTime;
             OnMoveInput?.Invoke(directionWithDeltaTime);
+        }
+
+        public void OnGamePause()
+        {
+            enabled = false;
         }
     }
 }

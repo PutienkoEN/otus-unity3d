@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="934704b9-af6f-4a38-83a2-54321aa73491" name="Changes" comment="Add TextMeshPro and buttons to scene">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameStartTimer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameStartTimer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Timer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Timer.cs.meta" afterDir="false" />
+    <list default="true" id="934704b9-af6f-4a38-83a2-54321aa73491" name="Changes" comment="Add timer for game start count">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameListenerManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameListenerManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameListener.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGamePauseListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGamePauseListener.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.otus-unity3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.otus-unity3d/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Unit/Unit.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +38,9 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Projects/personal/Unity/otus-unity3d/Assets/Scripts/GameManager/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Projects/personal/Unity/otus-unity3d/Assets/Scripts/GameManager/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Projects/personal/Unity/otus-unity3d/Assets/Scripts/GameManager/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGamePauseListener.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Pool/CachedObjectPool.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.sprite@1.0.0/Editor/Interface/ISpriteEditorDataProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.2d.sprite@1.0.0/Editor/ObjectMenuCreation/ItemCreationUtility.cs" root0="SKIP_HIGHLIGHTING" />
@@ -53,6 +60,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Tests/Runtime/Util/PrivateFieldSetter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/81/a6369561/IEnumerator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6afd1274f120405096bc1ad9e2010ba6157a00/2b/cd6e24ba/Behaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6afd1274f120405096bc1ad9e2010ba6157a00/5f/ea082511/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6afd1274f120405096bc1ad9e2010ba6157a00/e0/fc21a184/Vector2.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c2a97e0383e8404c9fc0ae19d58f57f146a800/a0/fefaa551/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/13ae6aa3c458d6b636864d5bcb4ef1f289091462a1f27a5b15c27ddaff8f848/System.Timers.cs" root0="SKIP_HIGHLIGHTING" />
@@ -226,7 +234,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719512538934</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Add timer for game start count">
+      <option name="closed" value="true" />
+      <created>1719516105266</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1719516105266</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add timer for game start count">
+      <option name="closed" value="true" />
+      <created>1719516121170</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1719516121170</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,6 +288,7 @@
     <MESSAGE value="Made method static for EnemyPositions" />
     <MESSAGE value="Add validation for components in EnemySpawner" />
     <MESSAGE value="Add TextMeshPro and buttons to scene" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add TextMeshPro and buttons to scene" />
+    <MESSAGE value="Add timer for game start count" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add timer for game start count" />
   </component>
 </project>
