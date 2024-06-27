@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class EnemySpawner : MonoBehaviour, IGamePauseListener, IGameStartListener
+    public class EnemySpawner : MonoBehaviour, IGamePauseListener, IGameStartListener, IGameFinishListener
     {
         [SerializeField] private EnemyPool enemyPool;
         [SerializeField] private EnemyPositions enemyPositions;
@@ -77,6 +77,11 @@ namespace ShootEmUp
         public void OnGameStart()
         {
             enabled = true;
+        }
+
+        public void OnGameFinish()
+        {
+            enabled = false;
         }
     }
 }

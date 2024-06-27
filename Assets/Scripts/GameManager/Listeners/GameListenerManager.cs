@@ -35,6 +35,14 @@ namespace ShootEmUp
                 .ForEach(listener => listener.OnGameStart());
         }
 
+        public void TriggerGameFinishListeners()
+        {
+            gameListeners
+                .FindAll(listener => listener is IGameFinishListener)
+                .ConvertAll(listener => (IGameFinishListener)listener)
+                .ForEach(listener => listener.OnGameFinish());
+        }
+
         private void AddListener(IGameListener gameListener)
         {
             gameListeners.Add(gameListener);

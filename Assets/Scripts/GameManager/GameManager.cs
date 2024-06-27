@@ -21,6 +21,7 @@ namespace ShootEmUp
 
         public void FinishGame()
         {
+            gameListenerManager.TriggerGameFinishListeners();
             Debug.Log("Game finished!");
         }
 

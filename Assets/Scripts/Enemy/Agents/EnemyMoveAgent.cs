@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class EnemyMoveAgent : MonoBehaviour, IGamePauseListener
+    public class EnemyMoveAgent : MonoBehaviour, IGamePauseListener, IGameFinishListener
     {
         private Transform destination;
         private Transform currentPosition;
@@ -54,6 +54,11 @@ namespace ShootEmUp
         public void OnGameResume()
         {
             enabled = true;
+        }
+
+        public void OnGameFinish()
+        {
+            enabled = false;
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class InputManager : MonoBehaviour, IGamePauseListener, IGameStartListener
+    public class InputManager : MonoBehaviour, IGamePauseListener, IGameStartListener, IGameFinishListener
     {
         public Action<Vector2> OnMoveInput;
         public Action OnShootInput;
@@ -60,6 +60,11 @@ namespace ShootEmUp
         public void OnGameStart()
         {
             enabled = true;
+        }
+
+        public void OnGameFinish()
+        {
+            enabled = false;
         }
     }
 }

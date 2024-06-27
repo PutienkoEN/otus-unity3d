@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class LevelBackground : MonoBehaviour, IGamePauseListener, IGameStartListener
+    public class LevelBackground : MonoBehaviour, IGamePauseListener, IGameStartListener, IGameFinishListener
     {
         [SerializeField] private Params positions;
 
@@ -64,7 +64,12 @@ namespace ShootEmUp
         {
             enabled = true;
         }
-
+        
+        public void OnGameFinish()
+        {
+            enabled = false;
+        }
+        
         [Serializable]
         public class Params
         {
