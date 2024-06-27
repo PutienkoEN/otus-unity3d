@@ -4,9 +4,14 @@ namespace ShootEmUp
 {
     public class GameManager : MonoBehaviour
     {
-        private GameState gameState;
+        [SerializeField] private GameStartTimer gameStartTimer;
 
         public void StartGame()
+        {
+            gameStartTimer.StartTimer(GameStartedAction);
+        }
+
+        private void GameStartedAction()
         {
             Debug.Log("Game started!");
         }
@@ -14,13 +19,6 @@ namespace ShootEmUp
         public void FinishGame()
         {
             Debug.Log("Game finished!");
-
-            // if (gameState == GameState.InProgress)
-            // {
-            //     Debug.Log("Game over!");
-            //     Time.timeScale = 0;
-            //     gameState = GameState.Finished;
-            // }
         }
 
         public void PauseGame()
