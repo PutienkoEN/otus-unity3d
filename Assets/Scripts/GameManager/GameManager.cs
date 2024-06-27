@@ -15,6 +15,7 @@ namespace ShootEmUp
 
         private void GameStartedAction()
         {
+            gameListenerManager.TriggerGameStartListeners();
             Debug.Log("Game started!");
         }
 

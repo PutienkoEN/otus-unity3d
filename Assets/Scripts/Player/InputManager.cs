@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class InputManager : MonoBehaviour, IGamePauseListener
+    public class InputManager : MonoBehaviour, IGamePauseListener, IGameStartListener
     {
         public Action<Vector2> OnMoveInput;
         public Action OnShootInput;
@@ -11,6 +11,7 @@ namespace ShootEmUp
         private void Awake()
         {
             IGameListener.Register(this);
+            enabled = false;
         }
 
         private void Update()
@@ -52,6 +53,11 @@ namespace ShootEmUp
         }
 
         public void OnGameResume()
+        {
+            enabled = true;
+        }
+
+        public void OnGameStart()
         {
             enabled = true;
         }

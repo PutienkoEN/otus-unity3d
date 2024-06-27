@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class LevelBackground : MonoBehaviour, IGamePauseListener
+    public class LevelBackground : MonoBehaviour, IGamePauseListener, IGameStartListener
     {
         [SerializeField] private Params positions;
 
@@ -18,7 +18,8 @@ namespace ShootEmUp
         private void Awake()
         {
             IGameListener.Register(this);
-            
+            enabled = false;
+
             startPositionY = positions.startPositionY;
             endPositionY = positions.endPositionY;
             movingSpeedY = positions.movingSpeed;
@@ -55,6 +56,11 @@ namespace ShootEmUp
         }
 
         public void OnGameResume()
+        {
+            enabled = true;
+        }
+
+        public void OnGameStart()
         {
             enabled = true;
         }
