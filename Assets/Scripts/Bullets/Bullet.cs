@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class Bullet : MonoBehaviour
+    public class Bullet : MonoBehaviour, IGamePauseListener
     {
         public event Action<Bullet, Collision2D> OnCollisionEntered;
 
@@ -12,6 +12,11 @@ namespace ShootEmUp
 
         [SerializeField] private new Rigidbody2D rigidbody2D;
         [SerializeField] private SpriteRenderer spriteRenderer;
+
+        private void Awake()
+        {
+            IGameListener.Register(this);
+        }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
@@ -29,6 +34,11 @@ namespace ShootEmUp
 
             transform.position = bulletData.Position;
             rigidbody2D.velocity = bulletData.Velocity;
+        }
+
+        public void OnGamePause()
+        {
+            rigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
 }

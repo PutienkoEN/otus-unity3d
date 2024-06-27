@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class EnemyAttackAgent : MonoBehaviour
+    public class EnemyAttackAgent : MonoBehaviour, IGamePauseListener
     {
         [SerializeField] private float countdown;
 
@@ -14,6 +14,11 @@ namespace ShootEmUp
         private bool canAttack;
 
         public Action<Transform> OnAttack;
+
+        private void Awake()
+        {
+            IGameListener.Register(this);
+        }
 
         private void FixedUpdate()
         {
@@ -54,6 +59,11 @@ namespace ShootEmUp
         public void Reset()
         {
             currentTime = countdown;
+        }
+
+        public void OnGamePause()
+        {
+            enabled = false;
         }
     }
 }

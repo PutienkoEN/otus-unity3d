@@ -3,19 +3,27 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class EnemySpawner : MonoBehaviour
+    public class EnemySpawner : MonoBehaviour, IGamePauseListener
     {
         [SerializeField] private EnemyPool enemyPool;
         [SerializeField] private EnemyPositions enemyPositions;
         [SerializeField] private Unit character;
         [SerializeField] private float targetReachedMagnitude;
 
+        private void Awake()
+        {
+            IGameListener.Register(this);
+        }
+
         private IEnumerator Start()
         {
             while (true)
             {
                 yield return new WaitForSeconds(1);
-                SpawnEnemy();
+                if (enabled)
+                {
+                    SpawnEnemy();
+                }
             }
         }
 
@@ -53,6 +61,11 @@ namespace ShootEmUp
             }
 
             attackAgent.Initialize(enemy, character);
+        }
+
+        public void OnGamePause()
+        {
+            enabled = false;
         }
     }
 }

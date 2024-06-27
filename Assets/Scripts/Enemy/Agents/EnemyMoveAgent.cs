@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class EnemyMoveAgent : MonoBehaviour
+    public class EnemyMoveAgent : MonoBehaviour, IGamePauseListener
     {
         private Transform destination;
         private Transform currentPosition;
@@ -20,6 +20,11 @@ namespace ShootEmUp
             this.targetReachedMagnitude = targetReachedMagnitude;
             this.currentPosition = currentPosition;
             this.destination = destination;
+        }
+
+        private void Awake()
+        {
+            IGameListener.Register(this);
         }
 
         private void FixedUpdate()
@@ -39,6 +44,11 @@ namespace ShootEmUp
 
             var direction = vector.normalized * Time.fixedDeltaTime;
             OnMove?.Invoke(direction);
+        }
+
+        public void OnGamePause()
+        {
+            enabled = false;
         }
     }
 }
