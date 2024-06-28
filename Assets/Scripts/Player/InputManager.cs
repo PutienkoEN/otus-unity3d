@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class InputManager : MonoBehaviour, IGamePauseListener, IGameStartListener, IGameFinishListener
+    public class InputManager : MonoBehaviour, IGamePauseListener, IGameStartListener, IGameFinishListener,
+        IGameUpdateListener
     {
         public Action<Vector2> OnMoveInput;
         public Action OnShootInput;
@@ -14,7 +15,7 @@ namespace ShootEmUp
             enabled = false;
         }
 
-        private void Update()
+        public void OnUpdate(float deltaTime)
         {
             HandleShootInput();
             HandleMoveInput();

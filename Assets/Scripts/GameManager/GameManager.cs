@@ -15,6 +15,26 @@ namespace ShootEmUp
         private State ResumeGameState = new(new HashSet<GameState> { GameState.Paused });
         private State FinishGameState = new(new HashSet<GameState> { GameState.InProgress });
 
+        private void Update()
+        {
+            if (currentState != GameState.InProgress)
+            {
+                return;
+            }
+
+            gameListenerManager.TriggerGameUpdateListeners();
+        }
+
+        private void FixedUpdate()
+        {
+            if (currentState != GameState.InProgress)
+            {
+                return;
+            }
+
+            gameListenerManager.TriggerGameFixedUpdateListeners();
+        }
+
         public void StartGame()
         {
             if (StartGameState.IsNotAllowedTransition(currentState))

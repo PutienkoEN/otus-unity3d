@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class EnemyAttackAgent : MonoBehaviour, IGamePauseListener, IGameFinishListener
+    public class EnemyAttackAgent : MonoBehaviour, IGamePauseListener, IGameFinishListener, IGameFixedUpdateListener
     {
         [SerializeField] private float countdown;
 
@@ -20,14 +20,14 @@ namespace ShootEmUp
             IGameListener.Register(this);
         }
 
-        private void FixedUpdate()
+        public void OnFixedUpdate(float fixedDeltaTime)
         {
             if (!canAttack)
             {
                 return;
             }
 
-            currentTime -= Time.fixedDeltaTime;
+            currentTime -= fixedDeltaTime;
             if (!(currentTime <= 0))
             {
                 return;

@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class BulletPool : CachedObjectPool<Bullet>
+    public class BulletPool : CachedObjectPool<Bullet>, IGameFixedUpdateListener
     {
         [Header("Bullet pool configuration")] [SerializeField]
         private LevelBounds levelBounds;
 
         private readonly List<Bullet> activeBulletsToCheckForBoundaries = new();
 
-        private void FixedUpdate()
+        public void OnFixedUpdate(float fixedDeltaTime)
         {
             activeBulletsToCheckForBoundaries.Clear();
             activeBulletsToCheckForBoundaries.AddRange(ActivePoolEntries);

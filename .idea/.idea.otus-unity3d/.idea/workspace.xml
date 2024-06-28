@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="934704b9-af6f-4a38-83a2-54321aa73491" name="Changes" comment="Add game finished logic">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle/IGameFixedUpdateListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle/IGameFixedUpdateListener.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle/IGameUpdateListener.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle/IGameUpdateListener.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameFinishListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameFinishListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameFinishListener.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameFinishListener.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameListener.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameListener.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGamePauseListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGamePauseListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGamePauseListener.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGamePauseListener.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameStartListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameStartListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameStartListener.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameStartListener.cs.meta" afterDir="false" />
+    <list default="true" id="934704b9-af6f-4a38-83a2-54321aa73491" name="Changes" comment="Add update listeners">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.otus-unity3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.otus-unity3d/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Agents/EnemyAttackAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Agents/EnemyAttackAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/Agents/EnemyMoveAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/Agents/EnemyMoveAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/GameListenerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/GameListenerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle/IGameFixedUpdateListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle/IGameFixedUpdateListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/InputManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719531055482</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Add update listeners">
+      <option name="closed" value="true" />
+      <created>1719534447342</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1719534447342</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +334,8 @@
     <MESSAGE value="Add pause to background" />
     <MESSAGE value="Add game started logic" />
     <MESSAGE value="Add game finished logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add game finished logic" />
+    <MESSAGE value="Add update listeners" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add update listeners" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
