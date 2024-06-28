@@ -60,14 +60,14 @@ namespace ShootEmUp
 
         private void AddListener(IGameListener gameListener)
         {
-            switch (gameListener)
+            if (gameListener is IGameUpdateListener gameUpdateListener)
             {
-                case IGameFixedUpdateListener fixedUpdateListener:
-                    fixedUpdateListeners.Add(fixedUpdateListener);
-                    break;
-                case IGameUpdateListener gameUpdateListener:
-                    gameUpdateListeners.Add(gameUpdateListener);
-                    break;
+                gameUpdateListeners.Add(gameUpdateListener);
+            }
+
+            if (gameListener is IGameFixedUpdateListener gameFixedUpdateListener)
+            {
+                fixedUpdateListeners.Add(gameFixedUpdateListener);
             }
 
             if (gameListener is IGameStartListener or IGamePauseListener or IGameFinishListener)

@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class InputManager : MonoBehaviour, IGamePauseListener, IGameStartListener, IGameFinishListener,
-        IGameUpdateListener
+    public class InputManager : MonoBehaviour,
+        IGameUpdateListener,
+        IGameFixedUpdateListener
     {
         public Action<Vector2> OnMoveInput;
         public Action OnShootInput;
@@ -18,7 +19,11 @@ namespace ShootEmUp
         public void OnUpdate(float deltaTime)
         {
             HandleShootInput();
-            HandleMoveInput();
+        }
+
+        public void OnFixedUpdate(float fixedDeltaTime)
+        {
+            HandleMoveInput(fixedDeltaTime);
         }
 
         private void HandleShootInput()
@@ -29,43 +34,23 @@ namespace ShootEmUp
             }
         }
 
-        private void HandleMoveInput()
+        private void HandleMoveInput(float fixedDeltaTime)
         {
             if (Input.GetKey(KeyCode.LeftArrow))
             {
-                MoveToDirection(Vector2.left);
+                MoveToDirection(Vector2.left, fixedDeltaTime);
             }
 
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                MoveToDirection(Vector2.right);
+                MoveToDirection(Vector2.right, fixedDeltaTime);
             }
         }
 
-        private void MoveToDirection(Vector2 direction)
+        private void MoveToDirection(Vector2 direction, float fixedDeltaTime)
         {
-            var directionWithDeltaTime = direction * Time.fixedDeltaTime;
+            var directionWithDeltaTime = direction * fixedDeltaTime;
             OnMoveInput?.Invoke(directionWithDeltaTime);
-        }
-
-        public void OnGamePause()
-        {
-            enabled = false;
-        }
-
-        public void OnGameResume()
-        {
-            enabled = true;
-        }
-
-        public void OnGameStart()
-        {
-            enabled = true;
-        }
-
-        public void OnGameFinish()
-        {
-            enabled = false;
         }
     }
 }

@@ -8,12 +8,12 @@ namespace ShootEmUp
         [SerializeField] private GameStartTimer gameStartTimer;
 
         private GameState currentState = GameState.None;
-        private GameListenerManager gameListenerManager = new();
+        private readonly GameListenerManager gameListenerManager = new();
 
-        private State StartGameState = new(new HashSet<GameState> { GameState.None });
-        private State PauseGameState = new(new HashSet<GameState> { GameState.InProgress });
-        private State ResumeGameState = new(new HashSet<GameState> { GameState.Paused });
-        private State FinishGameState = new(new HashSet<GameState> { GameState.InProgress });
+        private readonly State startGameState = new(new HashSet<GameState> { GameState.None });
+        private readonly State pauseGameState = new(new HashSet<GameState> { GameState.InProgress });
+        private readonly State resumeGameState = new(new HashSet<GameState> { GameState.Paused });
+        private readonly State finishGameState = new(new HashSet<GameState> { GameState.InProgress });
 
         private void Update()
         {
@@ -37,7 +37,7 @@ namespace ShootEmUp
 
         public void StartGame()
         {
-            if (StartGameState.IsNotAllowedTransition(currentState))
+            if (startGameState.IsNotAllowedTransition(currentState))
             {
                 return;
             }
@@ -56,7 +56,7 @@ namespace ShootEmUp
 
         public void FinishGame()
         {
-            if (FinishGameState.IsNotAllowedTransition(currentState))
+            if (finishGameState.IsNotAllowedTransition(currentState))
             {
                 return;
             }
@@ -69,7 +69,7 @@ namespace ShootEmUp
 
         public void PauseGame()
         {
-            if (PauseGameState.IsNotAllowedTransition(currentState))
+            if (pauseGameState.IsNotAllowedTransition(currentState))
             {
                 return;
             }
@@ -82,7 +82,7 @@ namespace ShootEmUp
 
         public void ResumeGame()
         {
-            if (ResumeGameState.IsNotAllowedTransition(currentState))
+            if (resumeGameState.IsNotAllowedTransition(currentState))
             {
                 return;
             }

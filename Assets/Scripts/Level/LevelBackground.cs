@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class LevelBackground : MonoBehaviour, IGamePauseListener, IGameStartListener, IGameFinishListener,
+    public class LevelBackground : MonoBehaviour,
         IGameFixedUpdateListener
     {
         [SerializeField] private Params positions;
@@ -46,29 +46,9 @@ namespace ShootEmUp
 
             myTransform.position -= new Vector3(
                 positionX,
-                movingSpeedY * Time.fixedDeltaTime,
+                movingSpeedY * fixedDeltaTime,
                 positionZ
             );
-        }
-
-        public void OnGamePause()
-        {
-            enabled = false;
-        }
-
-        public void OnGameResume()
-        {
-            enabled = true;
-        }
-
-        public void OnGameStart()
-        {
-            enabled = true;
-        }
-
-        public void OnGameFinish()
-        {
-            enabled = false;
         }
 
         [Serializable]
