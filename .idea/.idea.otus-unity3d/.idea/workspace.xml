@@ -5,10 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="934704b9-af6f-4a38-83a2-54321aa73491" name="Changes" comment="Add game finished logic">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameStateManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameStateManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.otus-unity3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.otus-unity3d/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle/IGameFixedUpdateListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle/IGameFixedUpdateListener.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle/IGameUpdateListener.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Lifecycle/IGameUpdateListener.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameFinishListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameFinishListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameFinishListener.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameFinishListener.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameListener.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameListener.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGamePauseListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGamePauseListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGamePauseListener.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGamePauseListener.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameStartListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameStartListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/IGameStartListener.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Listeners/Game/IGameStartListener.cs.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
