@@ -15,7 +15,7 @@ namespace ShootEmUp
 
         private void Awake()
         {
-            var findObjectOfType = FindObjectOfType<BulletSpawner>();
+            var findObjectOfType = FindObjectOfType<BulletFactory>();
             weaponComponent.Initialize(findObjectOfType);
         }
 

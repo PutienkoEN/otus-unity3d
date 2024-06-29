@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class BulletSpawner : MonoBehaviour
+    public class BulletFactory : MonoBehaviour
     {
         [SerializeField] private BulletPool bulletPool;
         [SerializeField] private DamageComponent damageComponent = new();
