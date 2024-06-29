@@ -42,6 +42,7 @@ namespace ShootEmUp
                 return;
             }
 
+            // Prevents start to be clicked twice while timer is running.
             currentState = GameState.AwaitStart;
             gameStartTimer.StartTimer(GameStartedAction);
         }
@@ -112,14 +113,9 @@ namespace ShootEmUp
             this.allowedStates = allowedStates;
         }
 
-        public bool IsAllowedTransition(GameState gameState)
-        {
-            return allowedStates.Contains(gameState);
-        }
-
         public bool IsNotAllowedTransition(GameState gameState)
         {
-            return !IsAllowedTransition(gameState);
+            return !allowedStates.Contains(gameState);
         }
     }
 }
