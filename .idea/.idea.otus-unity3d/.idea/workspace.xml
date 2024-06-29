@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="934704b9-af6f-4a38-83a2-54321aa73491" name="Changes" comment="Refactor enemy spawner">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/GameManager.cs" afterDir="false" />
+    <list default="true" id="934704b9-af6f-4a38-83a2-54321aa73491" name="Changes" comment="Cleanup state from unused method">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Buttons.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Buttons/PauseButtonObserver.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Buttons/PauseButtonObserver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Buttons/ResumeGameButtonObserver.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Buttons/ResumeGameButtonObserver.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Buttons/StartButtonObserver.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager/Buttons/StartButtonObserver.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.otus-unity3d/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.otus-unity3d/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +76,9 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2i6iT7LDuMdtSkBoLEq7DxlmTAK" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -303,7 +313,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719670204274</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Cleanup state from unused method">
+      <option name="closed" value="true" />
+      <created>1719672022429</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1719672022429</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Cleanup state from unused method">
+      <option name="closed" value="true" />
+      <created>1719672107752</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1719672107752</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,7 +386,8 @@
     <MESSAGE value="Add update listeners" />
     <MESSAGE value="Extract logic for update and fixed update" />
     <MESSAGE value="Refactor enemy spawner" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor enemy spawner" />
+    <MESSAGE value="Cleanup state from unused method" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup state from unused method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

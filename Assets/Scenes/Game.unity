@@ -1077,6 +1077,7 @@ GameObject:
   - component: {fileID: 798323728}
   - component: {fileID: 798323727}
   - component: {fileID: 798323726}
+  - component: {fileID: 798323729}
   m_Layer: 0
   m_Name: Start Game Button
   m_TagString: Untagged
@@ -1148,19 +1149,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 798323727}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3951702117947426123}
-        m_TargetAssemblyTypeName: ShootEmUp.GameManager, Assembly-CSharp
-        m_MethodName: StartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &798323727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1199,6 +1188,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798323724}
   m_CullTransparentMesh: 1
+--- !u!114 &798323729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798323724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb957ce55bb1446daca50bcff792dc29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &883274639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1243,7 @@ GameObject:
   - component: {fileID: 894835456}
   - component: {fileID: 894835455}
   - component: {fileID: 894835454}
+  - component: {fileID: 894835457}
   m_Layer: 0
   m_Name: Pause Game Button
   m_TagString: Untagged
@@ -1313,19 +1315,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 894835455}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3951702117947426123}
-        m_TargetAssemblyTypeName: ShootEmUp.GameManager, Assembly-CSharp
-        m_MethodName: PauseGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &894835455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1364,6 +1354,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894835452}
   m_CullTransparentMesh: 1
+--- !u!114 &894835457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894835452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73e1be76f71f4d9d8fdcaeaa72d93665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &982807164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,6 +1682,7 @@ GameObject:
   - component: {fileID: 1490763246}
   - component: {fileID: 1490763245}
   - component: {fileID: 1490763244}
+  - component: {fileID: 1490763247}
   m_Layer: 0
   m_Name: Resume Game Button
   m_TagString: Untagged
@@ -1751,19 +1754,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1490763245}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3951702117947426123}
-        m_TargetAssemblyTypeName: ShootEmUp.GameManager, Assembly-CSharp
-        m_MethodName: ResumeGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1490763245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1802,6 +1793,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490763242}
   m_CullTransparentMesh: 1
+--- !u!114 &1490763247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490763242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f74560f3e0643c19eee045a8413ce8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1517984380
 GameObject:
   m_ObjectHideFlags: 0
