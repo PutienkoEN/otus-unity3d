@@ -94,28 +94,4 @@ namespace ShootEmUp
             Debug.Log("Game resumed!");
         }
     }
-
-    public enum GameState
-    {
-        None,
-        AwaitStart,
-        InProgress,
-        Paused,
-        Finished
-    }
-
-    public class State
-    {
-        private readonly HashSet<GameState> allowedStates;
-
-        public State(HashSet<GameState> allowedStates)
-        {
-            this.allowedStates = allowedStates;
-        }
-
-        public bool IsNotAllowedTransition(GameState gameState)
-        {
-            return !allowedStates.Contains(gameState);
-        }
-    }
 }
