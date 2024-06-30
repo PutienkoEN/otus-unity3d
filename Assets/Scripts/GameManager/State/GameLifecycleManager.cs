@@ -15,6 +15,11 @@ namespace ShootEmUp
             IGameListener.OnRegister += AddListener;
         }
 
+        public void OnDestroy()
+        {
+            IGameListener.OnRegister -= AddListener;
+        }
+
         private void AddListener(IGameListener gameListener)
         {
             if (gameListener is IGameUpdateListener gameUpdateListener)
