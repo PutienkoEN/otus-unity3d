@@ -10,6 +10,11 @@ namespace ShootEmUp
         [SerializeField] private Timer timer = new();
         [SerializeField] private TextMeshProUGUI text;
 
+        private void Awake()
+        {
+            enabled = false;
+        }
+
         public void StartTimer(Action actionAfterTimerFinish)
         {
             timer.OnTick += UpdateText;
