@@ -63,7 +63,6 @@ namespace DI
                 .Bind<EnemyPositions>()
                 .FromComponentInHierarchy()
                 .AsSingle();
-
         }
 
         private void BulletConfiguration()

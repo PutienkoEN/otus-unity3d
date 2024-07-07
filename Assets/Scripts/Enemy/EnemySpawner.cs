@@ -57,7 +57,7 @@ namespace ShootEmUp
         {
             var spawnPosition = enemyPositions.RandomSpawnPosition();
             var attackPosition = enemyPositions.RandomAttackPosition();
-            enemyFactory.SpawnEnemy(spawnPosition, attackPosition);
+            enemyFactory.Create(spawnPosition, attackPosition);
         }
     }
 }

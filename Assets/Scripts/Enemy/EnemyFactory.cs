@@ -3,7 +3,7 @@ using Zenject;
 
 namespace ShootEmUp
 {
-    public class EnemyFactory
+    public class EnemyFactory : IFactory<Transform, Transform, Unit>
     {
         private EnemyPool enemyPool;
         private Unit character;
@@ -17,12 +17,14 @@ namespace ShootEmUp
             this.targetReachedMagnitude = targetReachedMagnitude;
         }
 
-        public void SpawnEnemy(Transform spawnPosition, Transform moveToPosition)
+        public Unit Create(Transform spawnPosition, Transform moveToPosition)
         {
             var enemy = enemyPool.Get();
 
             InitializeMoveAgent(enemy, spawnPosition, moveToPosition);
             InitializeAttackAgent(enemy);
+
+            return enemy;
         }
 
         private void InitializeMoveAgent(Unit enemy, Transform spawnPosition, Transform moveToPosition)
