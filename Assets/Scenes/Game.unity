@@ -636,7 +636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecfd6fd998d436295b90b49d855e6c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPool: {fileID: 363245579}
 --- !u!114 &363245579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1687,6 +1686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: {fileID: 4414282821800802405}
   characterTarget: {fileID: 1912796052}
+  bulletPool: {fileID: 363245579}
 --- !u!850595691 &1263964384
 LightingSettings:
   m_ObjectHideFlags: 0

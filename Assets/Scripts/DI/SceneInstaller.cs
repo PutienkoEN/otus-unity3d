@@ -1,3 +1,4 @@
+using Components;
 using ShootEmUp;
 using UnityEngine;
 using Zenject;
@@ -9,6 +10,8 @@ namespace DI
         [SerializeField] private Unit character;
         [SerializeField] private GameObject characterTarget;
 
+        [SerializeField] private BulletPool bulletPool;
+
         public override void InstallBindings()
         {
             Container
@@ -17,6 +20,23 @@ namespace DI
                 .AsSingle();
 
             PlayerConfiguration();
+            BulletConfiguration();
+        }
+
+        private void BulletConfiguration()
+        {
+            Container
+                .Bind<BulletPool>()
+                .FromInstance(bulletPool)
+                .AsSingle();
+
+            Container
+                .Bind<DamageComponent>()
+                .AsSingle();
+
+            Container
+                .Bind<BulletFactory>()
+                .AsSingle();
         }
 
         private void PlayerConfiguration()
@@ -31,7 +51,6 @@ namespace DI
                 .FromInstance(character)
                 .AsSingle()
                 .WhenInjectedInto(typeof(PlayerAttackAgent), typeof(PlayerController));
-
 
             Container
                 .Bind<GameObject>()

@@ -4,7 +4,7 @@ namespace ShootEmUp
 {
     public class GameStateStorage : MonoBehaviour
     {
-        private GameState gameState = GameState.None;
+        private GameState gameState = GameState.InProgress;
 
         public GameState GetCurrentState()
         {
