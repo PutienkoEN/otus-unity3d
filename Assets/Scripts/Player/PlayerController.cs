@@ -1,10 +1,9 @@
-using DI;
 using UnityEngine;
 using Zenject;
 
 namespace ShootEmUp
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController
     {
         private GameManager gameManager;
         private InputManager inputManager;
@@ -13,10 +12,9 @@ namespace ShootEmUp
         private PlayerAttackAgent playerAttackAgent;
 
         [Inject]
-        public void Construct(
+        public PlayerController(
             GameManager gameManager,
             InputManager inputManager,
-            [Inject(Id = SceneInstaller.Character)]
             Unit player,
             PlayerAttackAgent playerAttackAgent)
         {
@@ -24,16 +22,24 @@ namespace ShootEmUp
             this.inputManager = inputManager;
             this.player = player;
             this.playerAttackAgent = playerAttackAgent;
+
+            Debug.Log("HELLO");
+            OnCreate();
         }
 
-        private void OnEnable()
+        private void OnCreate()
         {
             player.OnDeath += OnCharacterDeath;
             inputManager.OnMoveInput += player.MoveTo;
             inputManager.OnShootInput += playerAttackAgent.Attack;
         }
 
-        private void OnDisable()
+        ~PlayerController()
+        {
+            OnDestroy();
+        }
+
+        private void OnDestroy()
         {
             player.OnDeath -= OnCharacterDeath;
             inputManager.OnMoveInput -= player.MoveTo;

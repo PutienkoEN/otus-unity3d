@@ -6,9 +6,6 @@ namespace DI
 {
     public class SceneInstaller : MonoInstaller
     {
-        public const string CharacterTarget = "Character Target";
-        public const string Character = "Character";
-
         [SerializeField] private Unit character;
         [SerializeField] private GameObject characterTarget;
 
@@ -19,6 +16,11 @@ namespace DI
                 .FromComponentInHierarchy()
                 .AsSingle();
 
+            PlayerConfiguration();
+        }
+
+        private void PlayerConfiguration()
+        {
             Container
                 .Bind<InputManager>()
                 .FromComponentInHierarchy()
@@ -26,19 +28,26 @@ namespace DI
 
             Container
                 .Bind<Unit>()
-                .WithId(Character)
                 .FromInstance(character)
-                .AsSingle();
+                .AsSingle()
+                .WhenInjectedInto(typeof(PlayerAttackAgent), typeof(PlayerController));
+
 
             Container
                 .Bind<GameObject>()
-                .WithId(CharacterTarget)
                 .FromInstance(characterTarget)
-                .AsSingle();
-            
+                .AsSingle()
+                .WhenInjectedInto(typeof(PlayerAttackAgent));
+
             Container
                 .Bind<PlayerAttackAgent>()
                 .AsSingle();
+
+            Container
+                .Bind<PlayerController>()
+                .FromNew()
+                .AsSingle()
+                .NonLazy();
         }
     }
 }

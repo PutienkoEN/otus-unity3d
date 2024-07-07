@@ -1,7 +1,5 @@
 ﻿using System;
-using DI;
 using UnityEngine;
-using Zenject;
 
 namespace ShootEmUp
 {
@@ -12,9 +10,7 @@ namespace ShootEmUp
         private GameObject target;
 
         public PlayerAttackAgent(
-            [Inject(Id = SceneInstaller.Character)]
             Unit unit,
-            [Inject(Id = SceneInstaller.CharacterTarget)]
             GameObject target)
         {
             this.unit = unit;
