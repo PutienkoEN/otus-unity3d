@@ -33,12 +33,5 @@ namespace ShootEmUp
             bullet.OnCollisionEntered -= OnBulletHit;
             damageComponent.DealDamage(bullet, collision.gameObject);
         }
-
-        public struct BulletData
-        {
-            public Vector2 Position;
-            public Vector2 Velocity;
-            public BulletConfig BulletConfig;
-        }
     }
 }

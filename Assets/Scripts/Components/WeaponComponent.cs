@@ -7,7 +7,9 @@ namespace ShootEmUp
     [Serializable]
     public class WeaponComponent
     {
-        [FormerlySerializedAs("bulletSpawner")] [SerializeField] private BulletFactory bulletFactory;
+        [FormerlySerializedAs("bulletSpawner")] [SerializeField]
+        private BulletFactory bulletFactory;
+
         [SerializeField] private BulletConfig bulletConfig;
         [SerializeField] private Transform firePoint;
 
@@ -21,7 +23,7 @@ namespace ShootEmUp
             var firePosition = GetFirePosition();
             var direction = GetTargetPosition(target, firePosition);
 
-            var bulletData = new BulletFactory.BulletData
+            var bulletData = new BulletData
             {
                 BulletConfig = bulletConfig,
                 Position = firePosition,

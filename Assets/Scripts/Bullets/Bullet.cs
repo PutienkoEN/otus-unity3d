@@ -26,7 +26,7 @@ namespace ShootEmUp
             OnCollisionEntered?.Invoke(this, collision);
         }
 
-        public void Shoot(BulletFactory.BulletData bulletData)
+        public void Shoot(BulletData bulletData)
         {
             var bulletConfig = bulletData.BulletConfig;
 
