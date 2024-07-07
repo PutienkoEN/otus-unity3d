@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using Zenject;
 
 namespace ShootEmUp
 {
     public class EnemySpawner : MonoBehaviour, IGameUpdateListener
     {
         [SerializeField] private EnemyPositions enemyPositions;
-        [SerializeField] private EnemyFactory enemyFactory;
+        [Inject] private EnemyFactory enemyFactory;
 
         [SerializeField] private float numberOfEnemiesToSpawn;
         [SerializeField] private float spawnInterval;

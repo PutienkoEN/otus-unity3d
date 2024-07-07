@@ -12,6 +12,8 @@ namespace DI
 
         [SerializeField] private BulletPool bulletPool;
 
+        [SerializeField] private float targetReachedMagnitude;
+
         public override void InstallBindings()
         {
             Container
@@ -19,8 +21,29 @@ namespace DI
                 .FromComponentInHierarchy()
                 .AsSingle();
 
+            EnemyConfiguration();
             PlayerConfiguration();
             BulletConfiguration();
+        }
+
+        private void EnemyConfiguration()
+        {
+            Container
+                .Bind<EnemyPool>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container
+                .Bind<float>()
+                .FromInstance(targetReachedMagnitude)
+                .AsSingle()
+                .WhenInjectedInto(typeof(EnemyFactory));
+
+
+            Container
+                .Bind<EnemyFactory>()
+                .FromNew()
+                .AsSingle();
         }
 
         private void BulletConfiguration()
@@ -50,7 +73,7 @@ namespace DI
                 .Bind<Unit>()
                 .FromInstance(character)
                 .AsSingle()
-                .WhenInjectedInto(typeof(PlayerAttackAgent), typeof(PlayerController));
+                .WhenInjectedInto(typeof(PlayerAttackAgent), typeof(PlayerController), typeof(EnemyFactory));
 
             Container
                 .Bind<GameObject>()

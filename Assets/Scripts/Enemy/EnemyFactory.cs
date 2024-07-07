@@ -1,14 +1,21 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using Zenject;
 
 namespace ShootEmUp
 {
-    [Serializable]
     public class EnemyFactory
     {
-        [SerializeField] private EnemyPool enemyPool;
-        [SerializeField] private Unit character;
-        [SerializeField] private float targetReachedMagnitude;
+        private EnemyPool enemyPool;
+        private Unit character;
+        private float targetReachedMagnitude;
+
+        [Inject]
+        public void Construct(EnemyPool enemyPool, Unit character, float targetReachedMagnitude)
+        {
+            this.enemyPool = enemyPool;
+            this.character = character;
+            this.targetReachedMagnitude = targetReachedMagnitude;
+        }
 
         public void SpawnEnemy(Transform spawnPosition, Transform moveToPosition)
         {
