@@ -13,6 +13,8 @@ namespace DI
         [SerializeField] private BulletPool bulletPool;
 
         [SerializeField] private float targetReachedMagnitude;
+        [SerializeField] private int numberOfEnemiesToSpawn;
+        [SerializeField] private float spawnInterval;
 
         public override void InstallBindings()
         {
@@ -36,14 +38,32 @@ namespace DI
             Container
                 .Bind<float>()
                 .FromInstance(targetReachedMagnitude)
-                .AsSingle()
+                .AsTransient()
                 .WhenInjectedInto(typeof(EnemyFactory));
 
+
+            Container
+                .Bind<int>()
+                .FromInstance(numberOfEnemiesToSpawn)
+                .AsTransient()
+                .WhenInjectedInto(typeof(EnemySpawner));
+
+            Container
+                .Bind<float>()
+                .FromInstance(spawnInterval)
+                .AsTransient()
+                .WhenInjectedInto(typeof(EnemySpawner));
 
             Container
                 .Bind<EnemyFactory>()
                 .FromNew()
                 .AsSingle();
+
+            Container
+                .Bind<EnemyPositions>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
         }
 
         private void BulletConfiguration()

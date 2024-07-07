@@ -5,14 +5,29 @@ namespace ShootEmUp
 {
     public class EnemySpawner : MonoBehaviour, IGameUpdateListener
     {
-        [SerializeField] private EnemyPositions enemyPositions;
-        [Inject] private EnemyFactory enemyFactory;
+        // Constant
+        private EnemyPositions enemyPositions;
+        private EnemyFactory enemyFactory;
 
-        [SerializeField] private float numberOfEnemiesToSpawn;
-        [SerializeField] private float spawnInterval;
+        private int numberOfEnemiesToSpawn;
+        private float spawnInterval;
 
+        // Dynamic
         private int numberOfSpawnedEnemies;
         private float timLeftBeforeSpawn;
+
+        [Inject]
+        public void Construct(
+            EnemyPositions enemyPositions,
+            EnemyFactory enemyFactory,
+            int numberOfEnemiesToSpawn,
+            float spawnInterval)
+        {
+            this.enemyPositions = enemyPositions;
+            this.enemyFactory = enemyFactory;
+            this.numberOfEnemiesToSpawn = numberOfEnemiesToSpawn;
+            this.spawnInterval = spawnInterval;
+        }
 
         private void Awake()
         {

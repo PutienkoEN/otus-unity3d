@@ -1,4 +1,3 @@
-using UnityEngine;
 using Zenject;
 
 namespace ShootEmUp
@@ -23,7 +22,6 @@ namespace ShootEmUp
             this.player = player;
             this.playerAttackAgent = playerAttackAgent;
 
-            Debug.Log("HELLO");
             OnCreate();
         }
 
