@@ -1057,13 +1057,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08dafeffcdcf8e4bad592b8d95f726a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPositions: {fileID: 7166351703523243261}
-  enemyFactory:
-    enemyPool: {fileID: 562298207}
-    character: {fileID: 4414282821800802405}
-    targetReachedMagnitude: 0.25
-  numberOfEnemiesToSpawn: 7
-  spawnInterval: 1
 --- !u!1 &798323724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,6 +1680,9 @@ MonoBehaviour:
   character: {fileID: 4414282821800802405}
   characterTarget: {fileID: 1912796052}
   bulletPool: {fileID: 363245579}
+  targetReachedMagnitude: 0.25
+  numberOfEnemiesToSpawn: 10
+  spawnInterval: 1
 --- !u!850595691 &1263964384
 LightingSettings:
   m_ObjectHideFlags: 0
