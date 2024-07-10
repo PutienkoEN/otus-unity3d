@@ -1,63 +1,68 @@
-﻿using UnityEngine;
+﻿using Pool;
 using Zenject;
 
 namespace ShootEmUp
 {
-    public class EnemySpawner : MonoBehaviour, IGameUpdateListener
+    public class EnemySpawner
     {
-        // Constant
-        private EnemyPositions enemyPositions;
-        private EnemyFactory enemyFactory;
+        private readonly ObjectPool<Unit> enemyPool;
 
-        private int numberOfEnemiesToSpawn;
-        private float spawnInterval;
+        private readonly EnemyPositions enemyPositions;
+        private readonly Unit character;
 
-        // Dynamic
-        private int numberOfSpawnedEnemies;
-        private float timLeftBeforeSpawn;
+        private readonly EnemyMoveHandler enemyMoveHandler;
+        private readonly EnemyAttackHandler enemyAttackHandler;
 
         [Inject]
-        public void Construct(
+        public EnemySpawner(
+            ObjectPool<Unit> enemyPool,
             EnemyPositions enemyPositions,
-            EnemyFactory enemyFactory,
-            int numberOfEnemiesToSpawn,
-            float spawnInterval)
+            Unit character,
+            EnemyMoveHandler enemyMoveHandler,
+            EnemyAttackHandler enemyAttackHandler)
         {
+            this.enemyPool = enemyPool;
             this.enemyPositions = enemyPositions;
-            this.enemyFactory = enemyFactory;
-            this.numberOfEnemiesToSpawn = numberOfEnemiesToSpawn;
-            this.spawnInterval = spawnInterval;
+            this.character = character;
+            this.enemyMoveHandler = enemyMoveHandler;
+            this.enemyAttackHandler = enemyAttackHandler;
+
+            this.enemyMoveHandler.TargetReached += StartAttack;
         }
 
-        private void Awake()
+        private void StartAttack(Unit unit)
         {
-            IGameListener.Register(this);
-            timLeftBeforeSpawn = spawnInterval;
+            enemyAttackHandler.Attack(unit, character);
         }
 
-        public void OnUpdate(float deltaTime)
+        ~EnemySpawner()
         {
-            if (numberOfSpawnedEnemies >= numberOfEnemiesToSpawn)
-            {
-                return;
-            }
-
-            timLeftBeforeSpawn -= deltaTime;
-            if (timLeftBeforeSpawn > 0)
-            {
-                return;
-            }
-
-            SpawnEnemy();
-            timLeftBeforeSpawn = spawnInterval;
-            numberOfSpawnedEnemies++;
+            enemyMoveHandler.TargetReached -= StartAttack;
         }
 
-        private void SpawnEnemy()
+        public void Spawn()
         {
             var spawnPosition = enemyPositions.RandomSpawnPosition();
             var attackPosition = enemyPositions.RandomAttackPosition();
-            enemyFactory.Create(spawnPosition, attackPosition);
+
+            var enemy = GetFromPool();
+            enemy.transform.position = spawnPosition.position;
+
+            enemyMoveHandler.Move(enemy, attackPosition);
+        }
+
+        private Unit GetFromPool()
+        {
+            var enemy = enemyPool.Get();
+            enemy.OnDeath += PutBackToPool;
+
+            return enemy;
+        }
+
+        private void PutBackToPool(Unit enemy)
+        {
+            enemyPool.Release(enemy);
+            enemy.OnDeath -= PutBackToPool;
         }
     }
 }

@@ -12,9 +12,6 @@ GameObject:
   - component: {fileID: 7936085547460007407}
   - component: {fileID: 5568771391735819375}
   - component: {fileID: 659620479434099170}
-  - component: {fileID: -7366053845255481490}
-  - component: {fileID: 8186052948131603766}
-  - component: {fileID: 6896809305229427933}
   - component: {fileID: 5254805033881612168}
   m_Layer: 11
   m_Name: Enemy
@@ -128,46 +125,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-7366053845255481490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559606060570185700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30bed4ffb64240ada8d13ecc504c02a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unit: {fileID: 5254805033881612168}
-  enemyMoveAgent: {fileID: 8186052948131603766}
-  enemyAttackAgent: {fileID: 6896809305229427933}
---- !u!114 &8186052948131603766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559606060570185700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bdb5771141e4cf18c434a69ec116e09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6896809305229427933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 559606060570185700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ba7965842e74a9f89ba3aa66d61da46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdown: 1
 --- !u!114 &5254805033881612168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +145,7 @@ MonoBehaviour:
   teamComponent:
     team: 1
   weaponComponent:
-    bulletSpawner: {fileID: 0}
+    bulletFactory: {fileID: 0}
     bulletConfig: {fileID: 11400000, guid: fb783a3e049869a46806026b28c23613, type: 2}
     firePoint: {fileID: 3195880656587174614}
 --- !u!1 &2239154907127902911

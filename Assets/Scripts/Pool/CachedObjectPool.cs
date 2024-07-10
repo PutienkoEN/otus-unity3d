@@ -21,7 +21,6 @@ namespace Pool
         private void Awake()
         {
             Pool = new ObjectPool<T>(
-                initialCount,
                 Create,
                 GetFromPull,
                 BackToPull

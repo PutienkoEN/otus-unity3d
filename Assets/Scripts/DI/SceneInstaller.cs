@@ -1,4 +1,5 @@
 using Components;
+using Pool;
 using ShootEmUp;
 using UnityEngine;
 using Zenject;
@@ -10,7 +11,11 @@ namespace DI
         [SerializeField] private Unit character;
         [SerializeField] private GameObject characterTarget;
 
+        [SerializeField] private Unit enemyPrefab;
         [SerializeField] private BulletPool bulletPool;
+
+        [SerializeField] private Transform world;
+        [SerializeField] private Transform enemyPoolDisabled;
 
         [SerializeField] private float targetReachedMagnitude;
         [SerializeField] private int numberOfEnemiesToSpawn;
@@ -30,29 +35,66 @@ namespace DI
 
         private void EnemyConfiguration()
         {
+            EnemyPoolConfiguration();
+            EnemySpawnerConfiguration();
+        }
+
+        private void EnemySpawnerConfiguration()
+        {
+            // Container
+            //     .Bind<int>()
+            //     .FromInstance(numberOfEnemiesToSpawn)
+            //     .AsTransient()
+            //     .WhenInjectedInto(typeof(EnemySpawner));
+            //
+            // Container
+            //     .Bind<float>()
+            //     .FromInstance(spawnInterval)
+            //     .AsTransient()
+            //     .WhenInjectedInto(typeof(EnemySpawner));
+
             Container
-                .Bind<EnemyPool>()
+                .Bind<EnemyPositions>()
                 .FromComponentInHierarchy()
                 .AsSingle();
 
             Container
-                .Bind<float>()
-                .FromInstance(targetReachedMagnitude)
-                .AsTransient()
-                .WhenInjectedInto(typeof(EnemyFactory));
-
-
-            Container
-                .Bind<int>()
-                .FromInstance(numberOfEnemiesToSpawn)
+                .Bind<Unit>()
+                .FromInstance(character)
                 .AsTransient()
                 .WhenInjectedInto(typeof(EnemySpawner));
 
             Container
-                .Bind<float>()
-                .FromInstance(spawnInterval)
-                .AsTransient()
-                .WhenInjectedInto(typeof(EnemySpawner));
+                .Bind<EnemySpawner>()
+                .AsSingle();
+
+            Container
+                .Bind<EnemyMoveHandler>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container
+                .Bind<EnemyAttackHandler>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            // Container
+            //     .Bind<EnemyTimedSpawner>()
+            //     .AsSingle()
+            //     .NonLazy();
+        }
+
+        private void EnemyPoolConfiguration()
+        {
+            // Container
+            //     .BindInstance(enemyPrefab)
+            //     .AsTransient()
+            //     .WhenInjectedInto<EnemyFactory>();
+
+            Container
+                .Bind<Unit>()
+                .FromInstance(enemyPrefab)
+                .WhenInjectedInto<EnemyFactory>();
 
             Container
                 .Bind<EnemyFactory>()
@@ -60,9 +102,20 @@ namespace DI
                 .AsSingle();
 
             Container
-                .Bind<EnemyPositions>()
-                .FromComponentInHierarchy()
-                .AsSingle();
+                .BindInstance(world)
+                .WithId("enabled")
+                .WhenInjectedInto(typeof(EnemyPoolFactory));
+
+            Container
+                .BindInstance(enemyPoolDisabled)
+                .WithId("disabled")
+                .WhenInjectedInto(typeof(EnemyPoolFactory));
+
+            Container
+                .Bind<ObjectPool<Unit>>()
+                .FromFactory<EnemyPoolFactory>()
+                .AsSingle()
+                .NonLazy();
         }
 
         private void BulletConfiguration()
@@ -91,8 +144,8 @@ namespace DI
             Container
                 .Bind<Unit>()
                 .FromInstance(character)
-                .AsSingle()
-                .WhenInjectedInto(typeof(PlayerAttackAgent), typeof(PlayerController), typeof(EnemyFactory));
+                .AsTransient()
+                .WhenInjectedInto(typeof(PlayerAttackAgent), typeof(PlayerController));
 
             Container
                 .Bind<GameObject>()

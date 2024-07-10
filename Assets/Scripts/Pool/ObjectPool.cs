@@ -7,12 +7,16 @@ namespace Pool
     public class ObjectPool<T> where T : Component
     {
         private readonly Queue<T> objects;
-        private readonly Func<T> actionToCreate;
-        private readonly Action<T> actionOnGet;
-        private readonly Action<T> actionOnRelease;
+        public Func<T> actionToCreate;
+        public Action<T> actionOnGet;
+        public Action<T> actionOnRelease;
+
+        public ObjectPool()
+        {
+            objects = new Queue<T>();
+        }
 
         public ObjectPool(
-            int initialSize,
             Func<T> actionToCreate,
             Action<T> actionOnGet,
             Action<T> actionOnRelease)
@@ -21,17 +25,7 @@ namespace Pool
             this.actionOnGet = actionOnGet;
             this.actionOnRelease = actionOnRelease;
 
-            objects = new Queue<T>(initialSize);
-            CreateObjects(initialSize);
-        }
-
-        private void CreateObjects(int initialSize)
-        {
-            for (var i = 0; i < initialSize; i++)
-            {
-                T component = actionToCreate?.Invoke();
-                objects.Enqueue(component);
-            }
+            objects = new Queue<T>();
         }
 
         public T Get()
