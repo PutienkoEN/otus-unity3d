@@ -1,36 +1,22 @@
-﻿using Components;
-using UnityEngine;
 using Zenject;
 
 namespace ShootEmUp
 {
-    public class BulletFactory : MonoBehaviour
+    public class BulletFactory : IFactory<Bullet>
     {
-        private BulletPool bulletPool;
-        private DamageComponent damageComponent;
+        private readonly Bullet bulletPrefab;
+        private readonly DiContainer diContainer;
 
-        public void Construct(BulletPool bulletPool, DamageComponent damageComponent)
+        [Inject]
+        public BulletFactory(Bullet bulletPrefab, DiContainer diContainer)
         {
-            this.bulletPool = bulletPool;
-            this.damageComponent = damageComponent;
+            this.bulletPrefab = bulletPrefab;
+            this.diContainer = diContainer;
         }
 
-        public void SpawnBullet(BulletData bulletData)
+        public Bullet Create()
         {
-            var bullet = bulletPool.Get();
-            ConfigureBullet(bullet, bulletData);
-        }
-
-        private void ConfigureBullet(Bullet bullet, BulletData bulletData)
-        {
-            bullet.CollisionEntered += OnBulletHit;
-            bullet.Shoot(bulletData);
-        }
-
-        private void OnBulletHit(Bullet bullet, Collision2D collision)
-        {
-            bullet.CollisionEntered -= OnBulletHit;
-            damageComponent.DealDamage(bullet, collision.gameObject);
+            return diContainer.InstantiatePrefabForComponent<Bullet>(bulletPrefab);
         }
     }
 }

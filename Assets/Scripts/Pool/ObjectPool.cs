@@ -7,14 +7,9 @@ namespace Pool
     public class ObjectPool<T> where T : Component
     {
         private readonly Queue<T> objects;
-        public Func<T> actionToCreate;
-        public Action<T> actionOnGet;
-        public Action<T> actionOnRelease;
-
-        public ObjectPool()
-        {
-            objects = new Queue<T>();
-        }
+        private readonly Func<T> actionToCreate;
+        private readonly Action<T> actionOnGet;
+        private readonly Action<T> actionOnRelease;
 
         public ObjectPool(
             Func<T> actionToCreate,

@@ -12,7 +12,6 @@ namespace DI
         [SerializeField] private GameObject characterTarget;
 
         [SerializeField] private Unit enemyPrefab;
-        [SerializeField] private BulletPool bulletPool;
 
         [SerializeField] private Transform world;
         [SerializeField] private Transform enemyPoolDisabled;

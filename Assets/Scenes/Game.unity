@@ -599,8 +599,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 363245576}
-  - component: {fileID: 363245578}
-  - component: {fileID: 363245579}
   m_Layer: 0
   m_Name: BulletSystem
   m_TagString: Untagged
@@ -624,35 +622,6 @@ Transform:
   m_Father: {fileID: 3951702117947426122}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &363245578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363245575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ecfd6fd998d436295b90b49d855e6c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &363245579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 363245575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 786106f36a71484bbb989ae34b9dc714, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialCount: 50
-  prefab: {fileID: 201757604187811891, guid: 5fe72886874b4e445b06cf777ca4920d, type: 3}
-  container: {fileID: 1831741369}
-  worldTransform: {fileID: 1683128698}
-  levelBounds: {fileID: 2572952653776768186}
 --- !u!1 &378913609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,7 +1599,6 @@ MonoBehaviour:
   characterTarget: {fileID: 1912796052}
   enemyPrefab: {fileID: 5254805033881612168, guid: 87fe189881a524806800482ac8eaaa83,
     type: 3}
-  bulletPool: {fileID: 363245579}
   world: {fileID: 1683128698}
   enemyPoolDisabled: {fileID: 178513672}
   targetReachedMagnitude: 0.25
@@ -1663,7 +1631,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbb5a6e2fc14f4597b2199c012cba4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPool: {fileID: 363245579}
+  bulletPrefab: {fileID: 201757604187811891, guid: 5fe72886874b4e445b06cf777ca4920d,
+    type: 3}
+  world: {fileID: 1683128698}
+  bulletPoolDisabled: {fileID: 1831741369}
+  levelBounds: {fileID: 2572952653776768186}
 --- !u!850595691 &1263964384
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -2603,7 +2575,7 @@ PrefabInstance:
         type: 3}
       propertyPath: weaponComponent.bulletFactory
       value: 
-      objectReference: {fileID: 363245578}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3926786964091724599, guid: 9699e7e809fd44b2bbf3d30c951ecbd2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9699e7e809fd44b2bbf3d30c951ecbd2, type: 3}
