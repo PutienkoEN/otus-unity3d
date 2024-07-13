@@ -145,10 +145,6 @@ MonoBehaviour:
     speed: 7
   teamComponent:
     team: 1
-  weaponComponent:
-    bulletFactory: {fileID: 0}
-    bulletConfig: {fileID: 11400000, guid: fb783a3e049869a46806026b28c23613, type: 2}
-    firePoint: {fileID: 3195880656587174614}
 --- !u!114 &4604288573784440519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +175,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a08a481411449fd93970637e97da48f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firingPoint: {fileID: 3195880656587174614}
   unitConfig: {fileID: 11400000, guid: aea3262534c8589488177c655c4033ef, type: 2}
+  bulletConfig: {fileID: 11400000, guid: fb783a3e049869a46806026b28c23613, type: 2}
 --- !u!1 &2239154907127902911
 GameObject:
   m_ObjectHideFlags: 0

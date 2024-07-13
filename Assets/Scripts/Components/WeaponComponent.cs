@@ -1,21 +1,22 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Zenject;
 
 namespace ShootEmUp
 {
     [Serializable]
     public class WeaponComponent
     {
-        [FormerlySerializedAs("bulletSpawner")] [SerializeField]
-        private BulletFactory bulletFactory;
+        private BulletSpawner bulletSpawner;
+        private BulletConfig bulletConfig;
+        private Transform firePoint;
 
-        [SerializeField] private BulletConfig bulletConfig;
-        [SerializeField] private Transform firePoint;
-
-        public void Initialize(BulletFactory bulletFactory)
+        [Inject]
+        public WeaponComponent(BulletSpawner bulletSpawner, BulletConfig bulletConfig, Transform firePoint)
         {
-            this.bulletFactory = bulletFactory;
+            this.bulletSpawner = bulletSpawner;
+            this.bulletConfig = bulletConfig;
+            this.firePoint = firePoint;
         }
 
         public void Attack(Transform target)
@@ -30,7 +31,7 @@ namespace ShootEmUp
                 Velocity = direction * bulletConfig.speed
             };
 
-            bulletFactory.SpawnBullet(bulletData);
+            bulletSpawner.SpawnBullet(bulletData);
         }
 
         private Vector2 GetFirePosition()

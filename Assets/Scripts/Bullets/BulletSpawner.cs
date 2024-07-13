@@ -1,14 +1,15 @@
-﻿using Components;
+using Components;
 using UnityEngine;
 using Zenject;
 
 namespace ShootEmUp
 {
-    public class BulletFactory : MonoBehaviour
+    public class BulletSpawner
     {
         private BulletPool bulletPool;
         private DamageComponent damageComponent;
 
+        [Inject]
         public void Construct(BulletPool bulletPool, DamageComponent damageComponent)
         {
             this.bulletPool = bulletPool;

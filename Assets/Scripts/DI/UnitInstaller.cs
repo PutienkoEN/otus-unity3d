@@ -5,7 +5,10 @@ namespace ShootEmUp
 {
     public class UnitInstaller : MonoInstaller
     {
+        [SerializeField] private Transform firingPoint;
+
         [SerializeField] private UnitConfig unitConfig;
+        [SerializeField] private BulletConfig bulletConfig;
 
         public override void InstallBindings()
         {
@@ -24,6 +27,21 @@ namespace ShootEmUp
                 .Bind<TeamComponent>()
                 .AsSingle()
                 .WithArguments(unitConfig.team);
+
+            Container
+                .Bind<BulletConfig>()
+                .FromInstance(bulletConfig)
+                .AsSingle();
+
+            Container
+                .Bind<Transform>()
+                .FromInstance(firingPoint)
+                .AsSingle()
+                .WhenInjectedInto(typeof(WeaponComponent));
+
+             Container
+                .Bind<WeaponComponent>()
+                .AsSingle();
         }
     }
 }

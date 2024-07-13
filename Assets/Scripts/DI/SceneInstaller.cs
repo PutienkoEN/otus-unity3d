@@ -27,16 +27,17 @@ namespace DI
                 .Bind<GameManager>()
                 .FromComponentInHierarchy()
                 .AsSingle();
-            
+
             Container
                 .Bind<InputManager>()
                 .FromComponentInHierarchy()
                 .AsSingle();
 
+            Container
+                .Bind<DamageComponent>()
+                .AsSingle();
 
             EnemyConfiguration();
-            // PlayerConfiguration();
-            BulletConfiguration();
         }
 
         private void EnemyConfiguration()
@@ -47,18 +48,6 @@ namespace DI
 
         private void EnemySpawnerConfiguration()
         {
-            // Container
-            //     .Bind<int>()
-            //     .FromInstance(numberOfEnemiesToSpawn)
-            //     .AsTransient()
-            //     .WhenInjectedInto(typeof(EnemySpawner));
-            //
-            // Container
-            //     .Bind<float>()
-            //     .FromInstance(spawnInterval)
-            //     .AsTransient()
-            //     .WhenInjectedInto(typeof(EnemySpawner));
-
             Container
                 .Bind<EnemyPositions>()
                 .FromComponentInHierarchy()
@@ -83,20 +72,10 @@ namespace DI
                 .Bind<EnemyAttackHandler>()
                 .FromComponentInHierarchy()
                 .AsSingle();
-
-            // Container
-            //     .Bind<EnemyTimedSpawner>()
-            //     .AsSingle()
-            //     .NonLazy();
         }
 
         private void EnemyPoolConfiguration()
         {
-            // Container
-            //     .BindInstance(enemyPrefab)
-            //     .AsTransient()
-            //     .WhenInjectedInto<EnemyFactory>();
-
             Container
                 .Bind<Unit>()
                 .FromInstance(enemyPrefab)
@@ -123,51 +102,5 @@ namespace DI
                 .AsSingle()
                 .NonLazy();
         }
-
-        private void BulletConfiguration()
-        {
-            Container
-                .Bind<BulletPool>()
-                .FromInstance(bulletPool)
-                .AsSingle();
-
-            Container
-                .Bind<DamageComponent>()
-                .AsSingle();
-
-            Container
-                .Bind<BulletFactory>()
-                .AsSingle();
-        }
-
-        // private void PlayerConfiguration()
-        // {
-        //     Container
-        //         .Bind<InputManager>()
-        //         .FromComponentInHierarchy()
-        //         .AsSingle();
-        //
-        //     Container
-        //         .Bind<Unit>()
-        //         .FromInstance(character)
-        //         .AsTransient()
-        //         .WhenInjectedInto(typeof(PlayerAttackAgent), typeof(PlayerController));
-        //
-        //     Container
-        //         .Bind<GameObject>()
-        //         .FromInstance(characterTarget)
-        //         .AsSingle()
-        //         .WhenInjectedInto(typeof(PlayerAttackAgent));
-        //
-        //     Container
-        //         .Bind<PlayerAttackAgent>()
-        //         .AsSingle();
-        //
-        //     Container
-        //         .Bind<PlayerController>()
-        //         .FromNew()
-        //         .AsSingle()
-        //         .NonLazy();
-        // }
     }
 }

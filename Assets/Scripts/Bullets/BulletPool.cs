@@ -28,12 +28,12 @@ namespace ShootEmUp
 
         protected override void AddToPull(Bullet bullet)
         {
-            bullet.OnCollisionEntered += ReleaseFromPull;
+            bullet.CollisionEntered += ReleaseFromPull;
         }
 
         protected override void RemoveFromPull(Bullet bullet)
         {
-            bullet.OnCollisionEntered -= ReleaseFromPull;
+            bullet.CollisionEntered -= ReleaseFromPull;
         }
 
         private void ReleaseFromPull(Bullet bullet, Collision2D _) => Pool.Release(bullet);

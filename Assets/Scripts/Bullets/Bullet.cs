@@ -5,7 +5,7 @@ namespace ShootEmUp
 {
     public class Bullet : MonoBehaviour, IGamePauseListener, IGameFinishListener
     {
-        public event Action<Bullet, Collision2D> OnCollisionEntered;
+        public event Action<Bullet, Collision2D> CollisionEntered;
 
         [field: NonSerialized] public Team Team { get; set; }
         [field: NonSerialized] public int Damage { get; set; }
@@ -23,7 +23,7 @@ namespace ShootEmUp
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            OnCollisionEntered?.Invoke(this, collision);
+            CollisionEntered?.Invoke(this, collision);
         }
 
         public void Shoot(BulletData bulletData)

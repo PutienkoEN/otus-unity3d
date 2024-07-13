@@ -10,7 +10,7 @@ namespace ShootEmUp
         [SerializeField] private HitPointsComponent hitPointsComponent;
         [SerializeField] private MoveComponent moveComponent;
         [SerializeField] private TeamComponent teamComponent;
-        [SerializeField] private WeaponComponent weaponComponent = new();
+        [SerializeField] private WeaponComponent weaponComponent;
 
         public Action<Unit> OnDeath;
 
@@ -18,17 +18,13 @@ namespace ShootEmUp
         public void Construct(
             HitPointsComponent hitPointsComponent,
             MoveComponent moveComponent,
-            TeamComponent teamComponent)
+            TeamComponent teamComponent,
+            WeaponComponent weaponComponent)
         {
             this.hitPointsComponent = hitPointsComponent;
             this.moveComponent = moveComponent;
             this.teamComponent = teamComponent;
-        }
-
-        private void Awake()
-        {
-            var findObjectOfType = FindObjectOfType<BulletFactory>();
-            weaponComponent.Initialize(findObjectOfType);
+            this.weaponComponent = weaponComponent;
         }
 
         public void TakeDamage(int damage, Team team)

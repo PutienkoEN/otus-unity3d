@@ -1555,6 +1555,7 @@ GameObject:
   - component: {fileID: 1235793369}
   - component: {fileID: 1235793371}
   - component: {fileID: 1235793372}
+  - component: {fileID: 1235793373}
   - component: {fileID: 1235793370}
   m_Layer: 0
   m_Name: '[DI]'
@@ -1595,6 +1596,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 1235793371}
   - {fileID: 1235793372}
+  - {fileID: 1235793373}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -1649,6 +1651,19 @@ MonoBehaviour:
   startButton: {fileID: 798323726}
   pauseButton: {fileID: 894835454}
   resumeButton: {fileID: 1490763244}
+--- !u!114 &1235793373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235793367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fbb5a6e2fc14f4597b2199c012cba4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPool: {fileID: 363245579}
 --- !u!850595691 &1263964384
 LightingSettings:
   m_ObjectHideFlags: 0
