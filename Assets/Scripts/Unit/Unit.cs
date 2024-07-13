@@ -1,17 +1,29 @@
 ﻿using System;
 using Components;
 using UnityEngine;
+using Zenject;
 
 namespace ShootEmUp
 {
     public class Unit : MonoBehaviour, IDamageable
     {
-        [SerializeField] private HitPointsComponent hitPointsComponent = new();
-        [SerializeField] private MoveComponent moveComponent = new();
-        [SerializeField] private TeamComponent teamComponent = new();
+        [SerializeField] private HitPointsComponent hitPointsComponent;
+        [SerializeField] private MoveComponent moveComponent;
+        [SerializeField] private TeamComponent teamComponent;
         [SerializeField] private WeaponComponent weaponComponent = new();
 
         public Action<Unit> OnDeath;
+
+        [Inject]
+        public void Construct(
+            HitPointsComponent hitPointsComponent,
+            MoveComponent moveComponent,
+            TeamComponent teamComponent)
+        {
+            this.hitPointsComponent = hitPointsComponent;
+            this.moveComponent = moveComponent;
+            this.teamComponent = teamComponent;
+        }
 
         private void Awake()
         {

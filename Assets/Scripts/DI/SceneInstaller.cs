@@ -27,9 +27,15 @@ namespace DI
                 .Bind<GameManager>()
                 .FromComponentInHierarchy()
                 .AsSingle();
+            
+            Container
+                .Bind<InputManager>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
 
             EnemyConfiguration();
-            PlayerConfiguration();
+            // PlayerConfiguration();
             BulletConfiguration();
         }
 
@@ -134,34 +140,34 @@ namespace DI
                 .AsSingle();
         }
 
-        private void PlayerConfiguration()
-        {
-            Container
-                .Bind<InputManager>()
-                .FromComponentInHierarchy()
-                .AsSingle();
-
-            Container
-                .Bind<Unit>()
-                .FromInstance(character)
-                .AsTransient()
-                .WhenInjectedInto(typeof(PlayerAttackAgent), typeof(PlayerController));
-
-            Container
-                .Bind<GameObject>()
-                .FromInstance(characterTarget)
-                .AsSingle()
-                .WhenInjectedInto(typeof(PlayerAttackAgent));
-
-            Container
-                .Bind<PlayerAttackAgent>()
-                .AsSingle();
-
-            Container
-                .Bind<PlayerController>()
-                .FromNew()
-                .AsSingle()
-                .NonLazy();
-        }
+        // private void PlayerConfiguration()
+        // {
+        //     Container
+        //         .Bind<InputManager>()
+        //         .FromComponentInHierarchy()
+        //         .AsSingle();
+        //
+        //     Container
+        //         .Bind<Unit>()
+        //         .FromInstance(character)
+        //         .AsTransient()
+        //         .WhenInjectedInto(typeof(PlayerAttackAgent), typeof(PlayerController));
+        //
+        //     Container
+        //         .Bind<GameObject>()
+        //         .FromInstance(characterTarget)
+        //         .AsSingle()
+        //         .WhenInjectedInto(typeof(PlayerAttackAgent));
+        //
+        //     Container
+        //         .Bind<PlayerAttackAgent>()
+        //         .AsSingle();
+        //
+        //     Container
+        //         .Bind<PlayerController>()
+        //         .FromNew()
+        //         .AsSingle()
+        //         .NonLazy();
+        // }
     }
 }

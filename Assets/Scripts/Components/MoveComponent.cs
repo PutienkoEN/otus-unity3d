@@ -1,13 +1,22 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 namespace ShootEmUp
 {
     [Serializable]
     public class MoveComponent
     {
-        [SerializeField] private Rigidbody2D rigidbody2D;
-        [SerializeField] private float speed = 5.0f;
+        [SerializeField] private float speed;
+
+        private Rigidbody2D rigidbody2D;
+
+        [Inject]
+        public MoveComponent(float speed, Rigidbody2D rigidbody2D)
+        {
+            this.speed = speed;
+            this.rigidbody2D = rigidbody2D;
+        }
 
         public void MoveTo(Vector2 vector)
         {

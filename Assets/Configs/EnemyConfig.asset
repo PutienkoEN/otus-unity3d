@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b2d165ff13c398419ead0b9489069f9, type: 3}
-  m_Name: GameSettings
+  m_Script: {fileID: 11500000, guid: 56a94f34410e43a3a0f0f02e46b15691, type: 3}
+  m_Name: EnemyConfig
   m_EditorClassIdentifier: 
-  enemySpawnerSettings:
-    numberOfEnemies: 10
-    spawnInterval: 1
-  enemyMoveSettings:
-    targetReachedMagnitude: 0.25
-  enemyAttackSettings:
-    attackInterval: 2
+  initialHealth: 5
+  speed: 3
+  team: 1

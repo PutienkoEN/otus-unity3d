@@ -4,11 +4,11 @@ namespace ShootEmUp
 {
     public class PlayerController
     {
-        private GameManager gameManager;
-        private InputManager inputManager;
+        private readonly GameManager gameManager;
+        private readonly InputManager inputManager;
 
-        private Unit player;
-        private PlayerAttackAgent playerAttackAgent;
+        private readonly Unit player;
+        private readonly PlayerAttackAgent playerAttackAgent;
 
         [Inject]
         public PlayerController(
