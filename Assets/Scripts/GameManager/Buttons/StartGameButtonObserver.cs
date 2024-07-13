@@ -1,22 +1,25 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
+using Zenject;
 
 namespace ShootEmUp.Buttons
 {
-    public class StartGameButtonObserver : MonoBehaviour
+    public class StartGameButtonObserver 
     {
-        private Button button;
-        private GameManager gameManager;
+        private readonly Button button;
+        private readonly GameManager gameManager;
 
-        private void Awake()
+        [Inject]
+        public StartGameButtonObserver(Button button, GameManager gameManager)
         {
-            button = GetComponent<Button>();
-            gameManager = FindObjectOfType<GameManager>();
+            this.button = button;
+            this.gameManager = gameManager;
 
             button.onClick.AddListener(gameManager.StartGame);
         }
 
-        private void OnDestroy()
+        ~StartGameButtonObserver()
         {
             button.onClick.RemoveListener(gameManager.StartGame);
         }
