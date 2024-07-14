@@ -5,13 +5,13 @@ using Zenject;
 
 namespace ShootEmUp
 {
-    public class EnemyAttackHandler : MonoBehaviour
+    public class EnemyAttackHandler : IFixedTickable
     {
+        private readonly Settings settings;
         private readonly List<AttackCommand> attackCommands = new();
-        private Settings settings;
 
         [Inject]
-        public void Construct(Settings settings)
+        public EnemyAttackHandler(Settings settings)
         {
             this.settings = settings;
         }
@@ -21,8 +21,7 @@ namespace ShootEmUp
             attackCommands.Add(new AttackCommand(unit, target));
         }
 
-        // Could be optimized to clean up stale commands
-        public void FixedUpdate()
+        public void FixedTick()
         {
             var fixedDeltaTime = Time.fixedDeltaTime;
 

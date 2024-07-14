@@ -6,26 +6,25 @@ using Zenject;
 
 namespace ShootEmUp
 {
-    public class EnemyMoveHandler : MonoBehaviour
+    public class EnemyMoveHandler : IFixedTickable
     {
         public Action<Unit> TargetReached;
-    
+
+        private readonly Settings settings;
         private readonly List<MoveCommand> moveCommands = new();
-        private Settings settings;
 
         [Inject]
-        public void Construct(Settings settings)
+        public EnemyMoveHandler(Settings settings)
         {
             this.settings = settings;
         }
-            
+
         public void Move(Unit unit, Transform target)
         {
             moveCommands.Add(new MoveCommand(unit, target));
         }
-        
-        // Could be optimized to clean up stale commands
-        public void FixedUpdate()
+
+        public void FixedTick()
         {
             var fixedDeltaTime = Time.fixedDeltaTime;
 

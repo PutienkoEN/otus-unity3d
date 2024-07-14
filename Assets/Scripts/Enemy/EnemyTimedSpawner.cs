@@ -4,24 +4,25 @@ using Zenject;
 
 namespace ShootEmUp
 {
-    public class EnemyTimedSpawner : MonoBehaviour
+    public class EnemyTimedSpawner : ITickable
     {
-        private EnemySpawner enemySpawner;
-        private Settings settings;
+        private readonly EnemySpawner enemySpawner;
+        private readonly Settings settings;
 
         // Dynamic
         private int numberOfSpawnedEnemies;
         private float timLeftBeforeSpawn;
 
         [Inject]
-        public void Construct(EnemySpawner enemySpawner, Settings settings)
+        public EnemyTimedSpawner(EnemySpawner enemySpawner, Settings settings)
         {
             this.enemySpawner = enemySpawner;
             this.settings = settings;
+
             timLeftBeforeSpawn = settings.spawnInterval;
         }
 
-        public void Update()
+        public void Tick()
         {
             if (numberOfSpawnedEnemies >= settings.numberOfEnemies)
             {
