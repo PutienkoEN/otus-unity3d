@@ -8,10 +8,8 @@ namespace DI
     {
         public override void InstallBindings()
         {
-
             Container
-                .Bind<InputManager>()
-                .FromComponentInHierarchy()
+                .BindInterfacesAndSelfTo<InputManager>()
                 .AsSingle();
 
             Container

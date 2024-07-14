@@ -11,6 +11,11 @@ namespace DI
             BindInterfaceAndSelfSingle<GameLifecycleManager>();
 
             Container
+                .BindInterfacesAndSelfTo<LevelBackground>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container
                 .Bind<GameStartTimer>()
                 .FromComponentInHierarchy()
                 .AsSingle();

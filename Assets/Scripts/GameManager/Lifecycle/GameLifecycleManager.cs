@@ -8,13 +8,18 @@ namespace ShootEmUp
     {
         private readonly GameStateStorage gameStateStorage;
 
-        private readonly List<IGameUpdateListener> gameUpdateListeners = new();
-        private readonly List<IGameFixedUpdateListener> fixedUpdateListeners = new();
+        private readonly List<IGameUpdateListener> gameUpdateListeners;
+        private readonly List<IGameFixedUpdateListener> fixedUpdateListeners;
 
         [Inject]
-        public GameLifecycleManager(GameStateStorage gameStateStorage)
+        public GameLifecycleManager(
+            GameStateStorage gameStateStorage,
+            List<IGameUpdateListener> gameUpdateListeners,
+            List<IGameFixedUpdateListener> fixedUpdateListeners)
         {
             this.gameStateStorage = gameStateStorage;
+            this.gameUpdateListeners = gameUpdateListeners;
+            this.fixedUpdateListeners = fixedUpdateListeners;
         }
 
         public void Tick()

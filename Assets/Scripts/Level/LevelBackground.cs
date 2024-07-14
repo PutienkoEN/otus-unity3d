@@ -3,8 +3,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class LevelBackground : MonoBehaviour,
-        IGameFixedUpdateListener
+    public class LevelBackground : MonoBehaviour, IGameFixedUpdateListener
     {
         [SerializeField] private Params positions;
 
