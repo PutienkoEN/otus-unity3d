@@ -8,10 +8,6 @@ namespace DI
     {
         public override void InstallBindings()
         {
-            Container
-                .Bind<GameManager>()
-                .FromComponentInHierarchy()
-                .AsSingle();
 
             Container
                 .Bind<InputManager>()

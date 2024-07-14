@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace ShootEmUp
 {
@@ -9,6 +10,7 @@ namespace ShootEmUp
         private readonly GameStartTimer gameStartTimer;
         private readonly List<IGameStartListener> gameStartListeners = new();
 
+        [Inject]
         public StartGameStateHandler(GameStateStorage gameStateStorage, GameStartTimer gameStartTimer)
         {
             this.gameStateStorage = gameStateStorage;

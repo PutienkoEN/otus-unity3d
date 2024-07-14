@@ -1,39 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 namespace ShootEmUp
 {
-    public class GameLifecycleManager : MonoBehaviour
+    public class GameLifecycleManager : ITickable, IFixedTickable
     {
-        [SerializeField] private GameStateStorage gameStateStorage;
+        private readonly GameStateStorage gameStateStorage;
 
         private readonly List<IGameUpdateListener> gameUpdateListeners = new();
         private readonly List<IGameFixedUpdateListener> fixedUpdateListeners = new();
 
-        public void Awake()
+        [Inject]
+        public GameLifecycleManager(GameStateStorage gameStateStorage)
         {
-            IGameListener.OnRegister += AddListener;
+            this.gameStateStorage = gameStateStorage;
         }
 
-        public void OnDestroy()
-        {
-            IGameListener.OnRegister -= AddListener;
-        }
-
-        private void AddListener(IGameListener gameListener)
-        {
-            if (gameListener is IGameUpdateListener gameUpdateListener)
-            {
-                gameUpdateListeners.Add(gameUpdateListener);
-            }
-
-            if (gameListener is IGameFixedUpdateListener gameFixedUpdateListener)
-            {
-                fixedUpdateListeners.Add(gameFixedUpdateListener);
-            }
-        }
-
-        private void Update()
+        public void Tick()
         {
             if (gameStateStorage.GetCurrentState() != GameState.InProgress)
             {
@@ -49,7 +33,7 @@ namespace ShootEmUp
             gameUpdateListeners.ForEach(listener => listener.OnUpdate(deltaTime));
         }
 
-        private void FixedUpdate()
+        public void FixedTick()
         {
             if (gameStateStorage.GetCurrentState() != GameState.InProgress)
             {
@@ -64,5 +48,30 @@ namespace ShootEmUp
             var deltaTime = Time.fixedDeltaTime;
             fixedUpdateListeners.ForEach(listener => listener.OnFixedUpdate(deltaTime));
         }
+
+
+        //
+        // public void Awake()
+        // {
+        //     IGameListener.OnRegister += AddListener;
+        // }
+        //
+        // public void OnDestroy()
+        // {
+        //     IGameListener.OnRegister -= AddListener;
+        // }
+        //
+        // private void AddListener(IGameListener gameListener)
+        // {
+        //     if (gameListener is IGameUpdateListener gameUpdateListener)
+        //     {
+        //         gameUpdateListeners.Add(gameUpdateListener);
+        //     }
+        //
+        //     if (gameListener is IGameFixedUpdateListener gameFixedUpdateListener)
+        //     {
+        //         fixedUpdateListeners.Add(gameFixedUpdateListener);
+        //     }
+        // }
     }
 }

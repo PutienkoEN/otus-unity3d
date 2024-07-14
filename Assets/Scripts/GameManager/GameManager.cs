@@ -1,23 +1,25 @@
-using UnityEngine;
+using Zenject;
 
 namespace ShootEmUp
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager
     {
-        [SerializeField] private GameStateStorage gameStateStorage;
+        private readonly IGameStateHandler startGameStateHandler;
+        private readonly IGameStateHandler pauseGameStateHandler;
+        private readonly IGameStateHandler resumeGameStateHandler;
+        private readonly IGameStateHandler finishGameStateHandler;
 
-        private IGameStateHandler startGameStateHandler;
-        private IGameStateHandler pauseGameStateHandler;
-        private IGameStateHandler resumeGameStateHandler;
-        private IGameStateHandler finishGameStateHandler;
-
-        private void Awake()
+        [Inject]
+        public GameManager(
+            StartGameStateHandler startGameStateHandler,
+            PauseGameStateHandler pauseGameStateHandler,
+            ResumeGameStateHandler resumeGameStateHandler,
+            FinishGameStateHandler finishGameStateHandler)
         {
-            var gameStartTimer = FindObjectOfType<GameStartTimer>();
-            startGameStateHandler = new StartGameStateHandler(gameStateStorage, gameStartTimer);
-            pauseGameStateHandler = new PauseGameStateHandler(gameStateStorage);
-            resumeGameStateHandler = new ResumeGameStateHandler(gameStateStorage);
-            finishGameStateHandler = new FinishGameStateHandler(gameStateStorage);
+            this.startGameStateHandler = startGameStateHandler;
+            this.pauseGameStateHandler = pauseGameStateHandler;
+            this.resumeGameStateHandler = resumeGameStateHandler;
+            this.finishGameStateHandler = finishGameStateHandler;
         }
 
         public void StartGame()

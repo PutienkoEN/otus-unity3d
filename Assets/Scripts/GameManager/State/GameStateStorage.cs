@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace ShootEmUp
 {
-    public class GameStateStorage : MonoBehaviour
+    public class GameStateStorage
     {
         private GameState gameState = GameState.InProgress;
 
