@@ -4,7 +4,7 @@ namespace ShootEmUp
 {
     public class PlayerController
     {
-        private readonly GameManager gameManager;
+        private readonly GameStateManager gameStateManager;
         private readonly InputManager inputManager;
 
         private readonly Unit player;
@@ -12,12 +12,12 @@ namespace ShootEmUp
 
         [Inject]
         public PlayerController(
-            GameManager gameManager,
+            GameStateManager gameStateManager,
             InputManager inputManager,
             Unit player,
             PlayerAttackAgent playerAttackAgent)
         {
-            this.gameManager = gameManager;
+            this.gameStateManager = gameStateManager;
             this.inputManager = inputManager;
             this.player = player;
             this.playerAttackAgent = playerAttackAgent;
@@ -44,6 +44,6 @@ namespace ShootEmUp
             inputManager.OnShootInput -= playerAttackAgent.Attack;
         }
 
-        private void OnCharacterDeath(Unit _) => gameManager.FinishGame();
+        private void OnCharacterDeath(Unit _) => gameStateManager.FinishGame();
     }
 }

@@ -2,7 +2,7 @@ using Zenject;
 
 namespace ShootEmUp
 {
-    public class GameManager
+    public class GameStateManager
     {
         private readonly IGameStateHandler startGameStateHandler;
         private readonly IGameStateHandler pauseGameStateHandler;
@@ -10,7 +10,7 @@ namespace ShootEmUp
         private readonly IGameStateHandler finishGameStateHandler;
 
         [Inject]
-        public GameManager(
+        public GameStateManager(
             StartGameStateHandler startGameStateHandler,
             PauseGameStateHandler pauseGameStateHandler,
             ResumeGameStateHandler resumeGameStateHandler,

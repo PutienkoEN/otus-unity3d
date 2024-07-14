@@ -20,7 +20,7 @@ namespace DI
                 .AsSingle();
 
             Container
-                .Bind<GameManager>()
+                .Bind<GameStateManager>()
                 .AsSingle();
         }
 
