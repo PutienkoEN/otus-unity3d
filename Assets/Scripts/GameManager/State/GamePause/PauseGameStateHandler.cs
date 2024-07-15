@@ -45,5 +45,6 @@ namespace ShootEmUp
             gamePauseListener.Add(listener);
             gameResumeListener.Add(listener);
         }
+        
     }
 }

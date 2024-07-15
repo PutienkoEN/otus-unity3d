@@ -16,11 +16,6 @@ namespace ShootEmUp
         private Vector3 savedVelocity;
         private float savedAngularVelocity;
 
-        private void Awake()
-        {
-            IGameListener.Register(this);
-        }
-
         private void OnCollisionEnter2D(Collision2D collision)
         {
             CollisionEntered?.Invoke(this, collision);
