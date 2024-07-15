@@ -44,7 +44,12 @@ namespace ShootEmUp
 
         private Bullet CreateBullet()
         {
-            return bulletFactory.Create();
+            var bullet = bulletFactory.Create();
+
+            pauseObserver.Observe(bullet);
+            finishObserver.Observe(bullet);
+
+            return bullet;
         }
 
         private void GetFromPull(Bullet entity)
@@ -52,8 +57,6 @@ namespace ShootEmUp
             entity.transform.SetParent(enabled);
             entity.CollisionEntered += OnBulletHit;
             bulletLocationObserver.Subscribe(entity);
-            pauseObserver.Observe(entity);
-            finishObserver.Observe(entity);
         }
 
         private void BackToPull(Bullet entity)
