@@ -1,10 +1,8 @@
-using UnityEngine;
-
 namespace ShootEmUp
 {
     public class GameStateStorage
     {
-        private GameState gameState = GameState.InProgress;
+        private GameState gameState = GameState.None;
 
         public GameState GetCurrentState()
         {
