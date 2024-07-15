@@ -33,7 +33,6 @@ namespace DI
         {
             BindInterfaceAndSelfSingle<StartGameStateHandler>();
             BindInterfaceAndSelfSingle<PauseGameStateHandler>();
-            BindInterfaceAndSelfSingle<ResumeGameStateHandler>();
             BindInterfaceAndSelfSingle<FinishGameStateHandler>();
         }
 

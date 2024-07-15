@@ -5,21 +5,19 @@ namespace ShootEmUp
     public class GameStateManager
     {
         private readonly IGameStateHandler startGameStateHandler;
-        private readonly IGameStateHandler pauseGameStateHandler;
-        private readonly IGameStateHandler resumeGameStateHandler;
         private readonly IGameStateHandler finishGameStateHandler;
+
+        private readonly PauseGameStateHandler pauseGameStateHandler;
 
         [Inject]
         public GameStateManager(
             StartGameStateHandler startGameStateHandler,
-            PauseGameStateHandler pauseGameStateHandler,
-            ResumeGameStateHandler resumeGameStateHandler,
-            FinishGameStateHandler finishGameStateHandler)
+            FinishGameStateHandler finishGameStateHandler,
+            PauseGameStateHandler pauseGameStateHandler)
         {
             this.startGameStateHandler = startGameStateHandler;
-            this.pauseGameStateHandler = pauseGameStateHandler;
-            this.resumeGameStateHandler = resumeGameStateHandler;
             this.finishGameStateHandler = finishGameStateHandler;
+            this.pauseGameStateHandler = pauseGameStateHandler;
         }
 
         public void StartGame()
@@ -40,17 +38,17 @@ namespace ShootEmUp
 
         public void PauseGame()
         {
-            if (pauseGameStateHandler.IsAllowed())
+            if (pauseGameStateHandler.IsPauseAllowed())
             {
-                pauseGameStateHandler.ChangeState();
+                pauseGameStateHandler.PauseGame();
             }
         }
 
         public void ResumeGame()
         {
-            if (resumeGameStateHandler.IsAllowed())
+            if (pauseGameStateHandler.IsResumeAllowed())
             {
-                resumeGameStateHandler.ChangeState();
+                pauseGameStateHandler.ResumeGame();
             }
         }
     }

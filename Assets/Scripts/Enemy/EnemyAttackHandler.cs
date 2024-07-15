@@ -5,15 +5,26 @@ using Zenject;
 
 namespace ShootEmUp
 {
-    public class EnemyAttackHandler : IFixedTickable
+    public class EnemyAttackHandler :
+        IFixedTickable,
+        IGamePauseListener,
+        IGameFinishListener
     {
+        private readonly IGameStateObserver<IGamePauseListener> pauseObserver;
         private readonly Settings settings;
+
         private readonly List<AttackCommand> attackCommands = new();
 
+        // Dynamic
+        private bool attackEnabled = true;
+
         [Inject]
-        public EnemyAttackHandler(Settings settings)
+        public EnemyAttackHandler(Settings settings, IGameStateObserver<IGamePauseListener> pauseObserver)
         {
             this.settings = settings;
+            this.pauseObserver = pauseObserver;
+
+            this.pauseObserver.Observe(this);
         }
 
         public void Attack(Unit unit, Unit target)
@@ -23,10 +34,30 @@ namespace ShootEmUp
 
         public void FixedTick()
         {
+            if (!attackEnabled)
+            {
+                return;
+            }
+
             var fixedDeltaTime = Time.fixedDeltaTime;
 
             attackCommands
                 .ForEach(attackCommand => Attack(attackCommand, fixedDeltaTime));
+        }
+
+        public void OnGamePause()
+        {
+            attackEnabled = false;
+        }
+
+        public void OnGameResume()
+        {
+            attackEnabled = true;
+        }
+
+        public void OnGameFinish()
+        {
+            OnGamePause();
         }
 
         private void Attack(AttackCommand attackCommand, float fixedDeltaTime)
