@@ -4,19 +4,13 @@ using Zenject;
 
 namespace ShootEmUp
 {
-    public class EnemyTimedSpawner :
-        ITickable,
-        IGamePauseListener,
-        IGameFinishListener
+    public class EnemyTimedSpawner : IGameUpdateListener
     {
         private readonly EnemySpawner enemySpawner;
         private readonly Settings settings;
 
-        // Dynamic
         private int numberOfSpawnedEnemies;
         private float timLeftBeforeSpawn;
-
-        private bool spawnerEnabled = true;
 
         [Inject]
         public EnemyTimedSpawner(EnemySpawner enemySpawner, Settings settings)
@@ -27,13 +21,8 @@ namespace ShootEmUp
             timLeftBeforeSpawn = settings.spawnInterval;
         }
 
-        public void Tick()
+        public void OnUpdate(float deltaTime)
         {
-            if (!spawnerEnabled)
-            {
-                return;
-            }
-
             if (numberOfSpawnedEnemies >= settings.numberOfEnemies)
             {
                 return;
@@ -50,20 +39,6 @@ namespace ShootEmUp
             numberOfSpawnedEnemies++;
         }
 
-        public void OnGamePause()
-        {
-            spawnerEnabled = false;
-        }
-
-        public void OnGameResume()
-        {
-            spawnerEnabled = true;
-        }
-
-        public void OnGameFinish()
-        {
-            OnGamePause();
-        }
 
         [Serializable]
         public class Settings

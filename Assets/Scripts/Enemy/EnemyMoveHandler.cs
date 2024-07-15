@@ -6,30 +6,17 @@ using Zenject;
 
 namespace ShootEmUp
 {
-    public class EnemyMoveHandler :
-        IFixedTickable,
-        IGamePauseListener,
-        IGameFinishListener
+    public class EnemyMoveHandler : IGameFixedUpdateListener
     {
         public Action<Unit> TargetReached;
 
         private readonly Settings settings;
-
         private readonly List<MoveCommand> moveCommands = new();
 
-        // Dynamic
-        private bool moveEnabled = true;
-
         [Inject]
-        public EnemyMoveHandler(
-            Settings settings,
-            IGameStateObserver<IGamePauseListener> pauseObserver,
-            IGameStateObserver<IGameFinishListener> finishObserver)
+        public EnemyMoveHandler(Settings settings)
         {
             this.settings = settings;
-
-            pauseObserver.Observe(this);
-            finishObserver.Observe(this);
         }
 
         public void Move(Unit unit, Transform target)
@@ -37,34 +24,12 @@ namespace ShootEmUp
             moveCommands.Add(new MoveCommand(unit, target));
         }
 
-        public void FixedTick()
+        public void OnFixedUpdate(float fixedDeltaTime)
         {
-            if (!moveEnabled)
-            {
-                return;
-            }
-
-            var fixedDeltaTime = Time.fixedDeltaTime;
-
             moveCommands
                 .Where(moveCommand => moveCommand.CanMove)
                 .ToList()
                 .ForEach(moveCommand => Move(moveCommand, fixedDeltaTime));
-        }
-
-        public void OnGamePause()
-        {
-            moveEnabled = false;
-        }
-
-        public void OnGameResume()
-        {
-            moveEnabled = true;
-        }
-
-        public void OnGameFinish()
-        {
-            OnGamePause();
         }
 
         private void Move(MoveCommand moveCommand, float fixedDeltaTime)
