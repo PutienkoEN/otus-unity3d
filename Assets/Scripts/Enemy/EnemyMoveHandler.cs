@@ -13,7 +13,6 @@ namespace ShootEmUp
     {
         public Action<Unit> TargetReached;
 
-        private readonly IGameStateObserver<IGamePauseListener> pauseObserver;
         private readonly Settings settings;
 
         private readonly List<MoveCommand> moveCommands = new();
@@ -22,12 +21,15 @@ namespace ShootEmUp
         private bool moveEnabled = true;
 
         [Inject]
-        public EnemyMoveHandler(Settings settings, IGameStateObserver<IGamePauseListener> pauseObserver)
+        public EnemyMoveHandler(
+            Settings settings,
+            IGameStateObserver<IGamePauseListener> pauseObserver,
+            IGameStateObserver<IGameFinishListener> finishObserver)
         {
             this.settings = settings;
-            this.pauseObserver = pauseObserver;
 
-            this.pauseObserver.Observe(this);
+            pauseObserver.Observe(this);
+            finishObserver.Observe(this);
         }
 
         public void Move(Unit unit, Transform target)

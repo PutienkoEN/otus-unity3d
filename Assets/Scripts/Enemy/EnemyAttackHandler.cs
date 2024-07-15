@@ -10,21 +10,22 @@ namespace ShootEmUp
         IGamePauseListener,
         IGameFinishListener
     {
-        private readonly IGameStateObserver<IGamePauseListener> pauseObserver;
         private readonly Settings settings;
-
         private readonly List<AttackCommand> attackCommands = new();
 
         // Dynamic
         private bool attackEnabled = true;
 
         [Inject]
-        public EnemyAttackHandler(Settings settings, IGameStateObserver<IGamePauseListener> pauseObserver)
+        public EnemyAttackHandler(
+            Settings settings,
+            IGameStateObserver<IGamePauseListener> pauseObserver,
+            IGameStateObserver<IGameFinishListener> finishObserver)
         {
             this.settings = settings;
-            this.pauseObserver = pauseObserver;
 
-            this.pauseObserver.Observe(this);
+            pauseObserver.Observe(this);
+            finishObserver.Observe(this);
         }
 
         public void Attack(Unit unit, Unit target)

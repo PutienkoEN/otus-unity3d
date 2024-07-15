@@ -4,7 +4,7 @@ using Zenject;
 
 namespace ShootEmUp
 {
-    public class FinishGameStateHandler : IGameStateHandler
+    public class FinishGameStateHandler : IGameStateHandler, IGameStateObserver<IGameFinishListener>
     {
         private readonly GameStateStorage gameStateStorage;
         private readonly List<IGameFinishListener> gameFinishListeners = new();
@@ -13,7 +13,6 @@ namespace ShootEmUp
         public FinishGameStateHandler(GameStateStorage gameStateStorage)
         {
             this.gameStateStorage = gameStateStorage;
-            IGameListener.OnRegister += AddListener;
         }
 
         public bool IsAllowed()
@@ -28,12 +27,9 @@ namespace ShootEmUp
             Debug.Log("Game finished!");
         }
 
-        private void AddListener(IGameListener gameListener)
+        public void Observe(IGameFinishListener listener)
         {
-            if (gameListener is IGameFinishListener gameStartListener)
-            {
-                gameFinishListeners.Add(gameStartListener);
-            }
+            gameFinishListeners.Add(listener);
         }
     }
 }
