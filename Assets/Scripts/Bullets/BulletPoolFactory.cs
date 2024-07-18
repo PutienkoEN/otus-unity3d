@@ -7,8 +7,8 @@ namespace ShootEmUp
 {
     public class BulletPoolFactory : IFactory<ObjectPool<Bullet>>
     {
-        private readonly Transform enabled;
-        private readonly Transform disabled;
+        private readonly Transform world;
+        private readonly Transform disabledContainer;
 
         private readonly BulletFactory bulletFactory;
         private readonly DamageComponent damageComponent;
@@ -20,16 +20,15 @@ namespace ShootEmUp
 
         [Inject]
         public BulletPoolFactory(
-            [Inject(Id = "enabled")] Transform enabled,
-            [Inject(Id = "disabled")] Transform disabled,
+            LevelProvider levelProvider,
             BulletFactory bulletFactory,
             DamageComponent damageComponent,
             BulletLocationObserver bulletLocationObserver,
             IGameStateObserver<IGamePauseListener> pauseObserver,
             IGameStateObserver<IGameFinishListener> finishObserver)
         {
-            this.enabled = enabled;
-            this.disabled = disabled;
+            world = levelProvider.worldContainer;
+            disabledContainer = levelProvider.disabledContainerForBullets;
             this.bulletFactory = bulletFactory;
             this.damageComponent = damageComponent;
             this.bulletLocationObserver = bulletLocationObserver;
@@ -54,14 +53,14 @@ namespace ShootEmUp
 
         private void GetFromPull(Bullet entity)
         {
-            entity.transform.SetParent(enabled);
+            entity.transform.SetParent(world);
             entity.CollisionEntered += OnBulletHit;
             bulletLocationObserver.Subscribe(entity);
         }
 
         private void BackToPull(Bullet entity)
         {
-            entity.transform.SetParent(disabled);
+            entity.transform.SetParent(disabledContainer);
             entity.CollisionEntered -= OnBulletHit;
             bulletLocationObserver.Unsubscribe(entity);
 
@@ -71,7 +70,7 @@ namespace ShootEmUp
         private void OnBulletHit(Bullet bullet, Collision2D collision)
         {
             bullet.CollisionEntered -= OnBulletHit;
-            bullet.transform.SetParent(disabled);
+            bullet.transform.SetParent(disabledContainer);
             damageComponent.DealDamage(bullet, collision.gameObject);
         }
     }

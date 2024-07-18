@@ -9,6 +9,11 @@ namespace DI
         public override void InstallBindings()
         {
             Container
+                .Bind<LevelProvider>()
+                .FromComponentInHierarchy()
+                .AsSingle();
+
+            Container
                 .BindInterfacesAndSelfTo<InputManager>()
                 .AsSingle();
 

@@ -9,6 +9,7 @@ namespace ShootEmUp
     {
         [SerializeField] private UnitConfig unitConfig;
 
+        // Left serializable to be able to change in editor for testing. Could be private/read only.
         [SerializeField] private HitPointsComponent hitPointsComponent;
         [SerializeField] private MoveComponent moveComponent;
         [SerializeField] private TeamComponent teamComponent;

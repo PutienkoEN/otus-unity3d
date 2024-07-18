@@ -9,7 +9,6 @@ namespace ShootEmUp
     {
         [SerializeField] private int hitPoints;
 
-        [Inject]
         public void Construct(int hitPoints)
         {
             this.hitPoints = hitPoints;

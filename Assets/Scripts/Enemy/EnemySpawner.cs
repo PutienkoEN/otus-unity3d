@@ -5,25 +5,24 @@ namespace ShootEmUp
 {
     public class EnemySpawner
     {
-        private readonly ObjectPool<Unit> enemyPool;
-
-        private readonly EnemyPositions enemyPositions;
         private readonly Unit character;
-
+        private readonly ObjectPool<Unit> enemyPool;
+        private readonly EnemyPositions enemyPositions;
         private readonly EnemyMoveHandler enemyMoveHandler;
         private readonly EnemyAttackHandler enemyAttackHandler;
 
         [Inject]
         public EnemySpawner(
+            LevelProvider levelProvider,
             ObjectPool<Unit> enemyPool,
             EnemyPositions enemyPositions,
-            Unit character,
             EnemyMoveHandler enemyMoveHandler,
             EnemyAttackHandler enemyAttackHandler)
         {
+            character = levelProvider.characterObject;
+
             this.enemyPool = enemyPool;
             this.enemyPositions = enemyPositions;
-            this.character = character;
             this.enemyMoveHandler = enemyMoveHandler;
             this.enemyAttackHandler = enemyAttackHandler;
 

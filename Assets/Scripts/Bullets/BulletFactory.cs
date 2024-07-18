@@ -8,9 +8,9 @@ namespace ShootEmUp
         private readonly DiContainer diContainer;
 
         [Inject]
-        public BulletFactory(Bullet bulletPrefab, DiContainer diContainer)
+        public BulletFactory(LevelProvider levelProvider, DiContainer diContainer)
         {
-            this.bulletPrefab = bulletPrefab;
+            bulletPrefab = levelProvider.bulletPrefab;
             this.diContainer = diContainer;
         }
 

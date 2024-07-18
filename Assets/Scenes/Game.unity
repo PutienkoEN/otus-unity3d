@@ -2384,6 +2384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3951702117947426122}
+  - component: {fileID: 3951702117947426129}
   - component: {fileID: 3951702117947426128}
   - component: {fileID: 3951702117947426127}
   - component: {fileID: 3951702117947426126}
@@ -2430,10 +2431,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 318790e3dfff6b641bdd98b7975452c4, type: 2}
   _monoInstallers:
   - {fileID: 3951702117947426128}
-  - {fileID: 3951702117947426127}
+  - {fileID: 3951702117947426124}
   - {fileID: 3951702117947426126}
   - {fileID: 3951702117947426125}
-  - {fileID: 3951702117947426124}
+  - {fileID: 3951702117947426127}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -2475,11 +2476,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043902f6d3f5419ea146c81b77734a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 4414282821800802405}
-  enemyPrefab: {fileID: 5254805033881612168, guid: 87fe189881a524806800482ac8eaaa83,
-    type: 3}
-  world: {fileID: 1683128698}
-  enemyPoolDisabled: {fileID: 178513672}
 --- !u!114 &3951702117947426126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2492,11 +2488,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbb5a6e2fc14f4597b2199c012cba4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 201757604187811891, guid: 5fe72886874b4e445b06cf777ca4920d,
-    type: 3}
-  world: {fileID: 1683128698}
-  bulletPoolDisabled: {fileID: 1831741369}
-  levelBounds: {fileID: 2572952653776768186}
 --- !u!114 &3951702117947426127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2524,6 +2515,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5d544787fd845d487d7da24a0d01fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3951702117947426129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3951702117947426121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfddabff3ccf4229baf9573365c31776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterObject: {fileID: 4414282821800802405}
+  enemyPrefab: {fileID: 5254805033881612168, guid: 87fe189881a524806800482ac8eaaa83,
+    type: 3}
+  bulletPrefab: {fileID: 201757604187811891, guid: 5fe72886874b4e445b06cf777ca4920d,
+    type: 3}
+  worldContainer: {fileID: 1683128698}
+  disabledContainerForBullets: {fileID: 1831741369}
+  disabledContainerForEnemies: {fileID: 178513672}
 --- !u!212 &4162873433806880330
 SpriteRenderer:
   m_ObjectHideFlags: 0

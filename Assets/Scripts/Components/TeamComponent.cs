@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using Zenject;
 
 namespace ShootEmUp
 {
@@ -8,7 +7,6 @@ namespace ShootEmUp
     public class TeamComponent
     {
         [SerializeField] private Team team;
-
 
         public void Construct(Team team)
         {
