@@ -34,13 +34,5 @@ namespace ShootEmUp
             gameStartListeners.ForEach(listener => listener.OnGameStart());
             Debug.Log("Game started!");
         }
-
-        private void AddListener(IGameListener gameListener)
-        {
-            if (gameListener is IGameStartListener gameStartListener)
-            {
-                gameStartListeners.Add(gameStartListener);
-            }
-        }
     }
 }
