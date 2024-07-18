@@ -33,7 +33,8 @@ namespace ShootEmUp
 
         public void FixedTick()
         {
-            // Prevent any action non bullet in case pause/finish
+            // Prevent any check on bullet in case pause/finish.
+            // Bullets won't move in any case, but no need to go through array if we in pause.
             if (!enabled)
             {
                 return;

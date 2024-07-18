@@ -4,6 +4,9 @@ using Zenject;
 
 namespace ShootEmUp
 {
+    /**
+     * Removed listeners, since for Start game we only wait for timer and then change state.
+     */
     public class StartGameStateHandler : IGameStateHandler
     {
         private readonly GameStateStorage gameStateStorage;

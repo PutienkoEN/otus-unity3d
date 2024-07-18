@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 namespace ShootEmUp
 {
     [Serializable]
     public class WeaponComponent
     {
+        // Configured in editor.
         [SerializeField] private BulletConfig bulletConfig;
         [SerializeField] private Transform firePoint;
 

@@ -23,6 +23,9 @@ namespace ShootEmUp
             hitPointsComponent.Construct(unitConfig.initialHealth);
             moveComponent.Construct(unitConfig.speed);
             teamComponent.Construct(unitConfig.team);
+            
+            // Not sure if it's better inject in component directly or in unit and pass to component.
+            // Decided to leave on Unit level to remove all components from zenject.
             weaponComponent.Construct(bulletSpawner);
         }
 

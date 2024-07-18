@@ -4,6 +4,9 @@ using Zenject;
 
 namespace ShootEmUp.Buttons
 {
+    /**
+     * Only one controller for several buttons for simplicity.
+     */
     public class ButtonController
     {
         private readonly LevelProvider levelProvider;

@@ -7,19 +7,19 @@ namespace ShootEmUp
     [Serializable]
     public class PlayerAttackAgent
     {
-        private Unit unit;
+        private Unit character;
         private GameObject target;
 
         [Inject]
-        public PlayerAttackAgent(Unit unit, GameObject target)
+        public PlayerAttackAgent(LevelProvider levelProvider, GameObject target)
         {
-            this.unit = unit;
+            character = levelProvider.characterObject;
             this.target = target;
         }
 
         public void Attack()
         {
-            unit.Attack(target.transform);
+            character.Attack(target.transform);
         }
     }
 }

@@ -4,22 +4,24 @@ namespace ShootEmUp
 {
     public class PlayerController
     {
+        private readonly Unit character;
+
         private readonly GameStateManager gameStateManager;
         private readonly InputManager inputManager;
-
-        private readonly Unit player;
         private readonly PlayerAttackAgent playerAttackAgent;
 
         [Inject]
         public PlayerController(
+            LevelProvider levelProvider,
             GameStateManager gameStateManager,
             InputManager inputManager,
-            Unit player,
             PlayerAttackAgent playerAttackAgent)
         {
+            character = levelProvider.characterObject;
+
             this.gameStateManager = gameStateManager;
             this.inputManager = inputManager;
-            this.player = player;
+
             this.playerAttackAgent = playerAttackAgent;
 
             OnCreate();
@@ -27,8 +29,8 @@ namespace ShootEmUp
 
         private void OnCreate()
         {
-            player.Death += OnCharacterDeath;
-            inputManager.MoveInput += player.MoveTo;
+            character.Death += OnCharacterDeath;
+            inputManager.MoveInput += character.MoveTo;
             inputManager.ShootInput += playerAttackAgent.Attack;
         }
 
@@ -39,8 +41,8 @@ namespace ShootEmUp
 
         private void OnDestroy()
         {
-            player.Death -= OnCharacterDeath;
-            inputManager.MoveInput -= player.MoveTo;
+            character.Death -= OnCharacterDeath;
+            inputManager.MoveInput -= character.MoveTo;
             inputManager.ShootInput -= playerAttackAgent.Attack;
         }
 

@@ -6,15 +6,11 @@ namespace DI
 {
     public class CharacterInstaller : MonoInstaller
     {
+        // Left here, since very specific use case. Probably won't be used anywhere else.
         [SerializeField] private GameObject characterTarget;
 
         public override void InstallBindings()
         {
-            Container
-                .Bind<Unit>()
-                .FromComponentOn(gameObject)
-                .AsSingle();
-
             Container
                 .Bind<PlayerAttackAgent>()
                 .AsSingle()
