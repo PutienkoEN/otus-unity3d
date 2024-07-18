@@ -2369,12 +2369,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3238117085433948338, guid: 9699e7e809fd44b2bbf3d30c951ecbd2,
         type: 3}
-      propertyPath: weaponComponent.bulletConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: fb783a3e049869a46806026b28c23613,
-        type: 2}
-    - target: {fileID: 3238117085433948338, guid: 9699e7e809fd44b2bbf3d30c951ecbd2,
-        type: 3}
       propertyPath: weaponComponent.bulletFactory
       value: 
       objectReference: {fileID: 0}

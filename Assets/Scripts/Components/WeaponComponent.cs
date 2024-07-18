@@ -7,16 +7,14 @@ namespace ShootEmUp
     [Serializable]
     public class WeaponComponent
     {
-        private BulletSpawner bulletSpawner;
-        private BulletConfig bulletConfig;
-        private Transform firePoint;
+        [SerializeField] private BulletConfig bulletConfig;
+        [SerializeField] private Transform firePoint;
 
-        [Inject]
-        public WeaponComponent(BulletSpawner bulletSpawner, BulletConfig bulletConfig, Transform firePoint)
+        private BulletSpawner bulletSpawner;
+
+        public void Construct(BulletSpawner bulletSpawner)
         {
             this.bulletSpawner = bulletSpawner;
-            this.bulletConfig = bulletConfig;
-            this.firePoint = firePoint;
         }
 
         public void Attack(Transform target)

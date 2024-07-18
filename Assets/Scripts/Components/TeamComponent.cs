@@ -9,8 +9,8 @@ namespace ShootEmUp
     {
         [SerializeField] private Team team;
 
-        [Inject]
-        public TeamComponent(Team team)
+
+        public void Construct(Team team)
         {
             this.team = team;
         }

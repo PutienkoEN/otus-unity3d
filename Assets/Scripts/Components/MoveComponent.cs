@@ -8,14 +8,11 @@ namespace ShootEmUp
     public class MoveComponent
     {
         [SerializeField] private float speed;
+        [SerializeField] private Rigidbody2D rigidbody2D;
 
-        private Rigidbody2D rigidbody2D;
-
-        [Inject]
-        public MoveComponent(float speed, Rigidbody2D rigidbody2D)
+        public void Construct(float speed)
         {
             this.speed = speed;
-            this.rigidbody2D = rigidbody2D;
         }
 
         public void MoveTo(Vector2 vector)

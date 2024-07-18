@@ -7,6 +7,8 @@ namespace ShootEmUp
 {
     public class Unit : MonoBehaviour, IDamageable
     {
+        [SerializeField] private UnitConfig unitConfig;
+
         [SerializeField] private HitPointsComponent hitPointsComponent;
         [SerializeField] private MoveComponent moveComponent;
         [SerializeField] private TeamComponent teamComponent;
@@ -15,16 +17,12 @@ namespace ShootEmUp
         public Action<Unit> OnDeath;
 
         [Inject]
-        public void Construct(
-            HitPointsComponent hitPointsComponent,
-            MoveComponent moveComponent,
-            TeamComponent teamComponent,
-            WeaponComponent weaponComponent)
+        public void Construct(BulletSpawner bulletSpawner)
         {
-            this.hitPointsComponent = hitPointsComponent;
-            this.moveComponent = moveComponent;
-            this.teamComponent = teamComponent;
-            this.weaponComponent = weaponComponent;
+            hitPointsComponent.Construct(unitConfig.initialHealth);
+            moveComponent.Construct(unitConfig.speed);
+            teamComponent.Construct(unitConfig.team);
+            weaponComponent.Construct(bulletSpawner);
         }
 
         public void TakeDamage(int damage, Team team)
