@@ -8,7 +8,6 @@ namespace ShootEmUp
     {
         private readonly GameStateStorage gameStateStorage;
         private readonly GameStartTimer gameStartTimer;
-        private readonly List<IGameStartListener> gameStartListeners = new();
 
         [Inject]
         public StartGameStateHandler(GameStateStorage gameStateStorage, GameStartTimer gameStartTimer)
@@ -31,7 +30,6 @@ namespace ShootEmUp
         private void StartGame()
         {
             gameStateStorage.SetCurrentState(GameState.InProgress);
-            gameStartListeners.ForEach(listener => listener.OnGameStart());
             Debug.Log("Game started!");
         }
     }
