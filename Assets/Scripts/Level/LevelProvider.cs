@@ -1,19 +1,20 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace ShootEmUp
 {
     public class LevelProvider : MonoBehaviour
     {
-        // Objects
-        public Unit characterObject;
+        [Header("Character")] public Unit characterObject;
 
-        // Prefabs
-        public Unit enemyPrefab;
+        [Header("Prefabs")] public Unit enemyPrefab;
         public Bullet bulletPrefab;
 
-        // Containers
-        public Transform worldContainer;
+        [Header("Buttons")] public Button startButton;
+        public Button pauseButton;
+        public Button resumeButton;
+
+        [Header("Containers")] public Transform worldContainer;
         public Transform disabledContainerForBullets;
         public Transform disabledContainerForEnemies;
     }

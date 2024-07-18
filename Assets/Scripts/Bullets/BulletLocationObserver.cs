@@ -33,6 +33,7 @@ namespace ShootEmUp
 
         public void FixedTick()
         {
+            // Prevent any action non bullet in case pause/finish
             if (!enabled)
             {
                 return;

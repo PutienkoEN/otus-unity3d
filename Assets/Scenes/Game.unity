@@ -2500,9 +2500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f49097d8c79b463b870e7c63d907b9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 798323726}
-  pauseButton: {fileID: 894835454}
-  resumeButton: {fileID: 1490763244}
 --- !u!114 &3951702117947426128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2532,6 +2529,9 @@ MonoBehaviour:
     type: 3}
   bulletPrefab: {fileID: 201757604187811891, guid: 5fe72886874b4e445b06cf777ca4920d,
     type: 3}
+  startButton: {fileID: 798323726}
+  pauseButton: {fileID: 894835454}
+  resumeButton: {fileID: 1490763244}
   worldContainer: {fileID: 1683128698}
   disabledContainerForBullets: {fileID: 1831741369}
   disabledContainerForEnemies: {fileID: 178513672}
