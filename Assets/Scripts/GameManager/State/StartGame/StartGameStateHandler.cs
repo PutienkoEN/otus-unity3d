@@ -15,8 +15,6 @@ namespace ShootEmUp
         {
             this.gameStateStorage = gameStateStorage;
             this.gameStartTimer = gameStartTimer;
-
-            IGameListener.OnRegister += AddListener;
         }
 
         public bool IsAllowed()

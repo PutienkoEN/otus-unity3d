@@ -17,7 +17,6 @@ namespace ShootEmUp
 
         private void Awake()
         {
-            IGameListener.Register(this);
             enabled = false;
 
             startPositionY = positions.startPositionY;
