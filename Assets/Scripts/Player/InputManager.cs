@@ -5,8 +5,8 @@ namespace ShootEmUp
 {
     public class InputManager : IGameUpdateListener, IGameFixedUpdateListener
     {
-        public Action<Vector2> OnMoveInput;
-        public Action OnShootInput;
+        public Action<Vector2> MoveInput;
+        public Action ShootInput;
         
         public void OnUpdate(float deltaTime)
         {
@@ -22,7 +22,7 @@ namespace ShootEmUp
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                OnShootInput?.Invoke();
+                ShootInput?.Invoke();
             }
         }
 
@@ -42,7 +42,7 @@ namespace ShootEmUp
         private void MoveToDirection(Vector2 direction, float fixedDeltaTime)
         {
             var directionWithDeltaTime = direction * fixedDeltaTime;
-            OnMoveInput?.Invoke(directionWithDeltaTime);
+            MoveInput?.Invoke(directionWithDeltaTime);
         }
     }
 }

@@ -12,9 +12,9 @@ namespace ShootEmUp
 
         public void StartTimer(Action actionAfterTimerFinish)
         {
-            timer.OnTick += UpdateText;
-            timer.OnFinish += actionAfterTimerFinish;
-            timer.OnFinish += DisableText;
+            timer.Tick += UpdateText;
+            timer.Finish += actionAfterTimerFinish;
+            timer.Finish += DisableText;
             StartCoroutine(timer.Start());
         }
 

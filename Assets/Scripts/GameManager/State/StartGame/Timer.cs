@@ -10,8 +10,8 @@ namespace ShootEmUp
         [SerializeField] private float timeInSeconds = 3;
         [SerializeField] private float tickInSeconds = 1;
 
-        public Action<float> OnTick;
-        public Action OnFinish;
+        public Action<float> Tick;
+        public Action Finish;
         private float timeLeft;
 
         public IEnumerator Start()
@@ -21,14 +21,14 @@ namespace ShootEmUp
             var delay = new WaitForSeconds(tickInSeconds);
             while (timeLeft > 0)
             {
-                OnTick?.Invoke(timeLeft);
+                Tick?.Invoke(timeLeft);
                 timeLeft -= tickInSeconds;
                 yield return delay;
             }
 
             if (timeLeft <= 0)
             {
-                OnFinish?.Invoke();
+                Finish?.Invoke();
             }
         }
     }

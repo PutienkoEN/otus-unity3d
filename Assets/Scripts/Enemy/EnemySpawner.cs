@@ -54,7 +54,7 @@ namespace ShootEmUp
         private Unit GetFromPool()
         {
             var enemy = enemyPool.Get();
-            enemy.OnDeath += PutBackToPool;
+            enemy.Death += PutBackToPool;
 
             return enemy;
         }
@@ -62,7 +62,7 @@ namespace ShootEmUp
         private void PutBackToPool(Unit enemy)
         {
             enemyPool.Release(enemy);
-            enemy.OnDeath -= PutBackToPool;
+            enemy.Death -= PutBackToPool;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace ShootEmUp
         [SerializeField] private TeamComponent teamComponent;
         [SerializeField] private WeaponComponent weaponComponent;
 
-        public Action<Unit> OnDeath;
+        public Action<Unit> Death;
 
         [Inject]
         public void Construct(BulletSpawner bulletSpawner)
@@ -42,7 +42,7 @@ namespace ShootEmUp
             // Since we took damage, we recheck hit points once again.
             if (hitPointsComponent.IsHitPointsZeroOrLess())
             {
-                OnDeath?.Invoke(this);
+                Death?.Invoke(this);
             }
         }
 

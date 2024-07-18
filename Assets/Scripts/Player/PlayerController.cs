@@ -27,9 +27,9 @@ namespace ShootEmUp
 
         private void OnCreate()
         {
-            player.OnDeath += OnCharacterDeath;
-            inputManager.OnMoveInput += player.MoveTo;
-            inputManager.OnShootInput += playerAttackAgent.Attack;
+            player.Death += OnCharacterDeath;
+            inputManager.MoveInput += player.MoveTo;
+            inputManager.ShootInput += playerAttackAgent.Attack;
         }
 
         ~PlayerController()
@@ -39,9 +39,9 @@ namespace ShootEmUp
 
         private void OnDestroy()
         {
-            player.OnDeath -= OnCharacterDeath;
-            inputManager.OnMoveInput -= player.MoveTo;
-            inputManager.OnShootInput -= playerAttackAgent.Attack;
+            player.Death -= OnCharacterDeath;
+            inputManager.MoveInput -= player.MoveTo;
+            inputManager.ShootInput -= playerAttackAgent.Attack;
         }
 
         private void OnCharacterDeath(Unit _) => gameStateManager.FinishGame();
