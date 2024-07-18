@@ -14,26 +14,18 @@ namespace ShootEmUp
         private readonly DamageComponent damageComponent;
         private readonly BulletLocationObserver bulletLocationObserver;
 
-        // Inject here once instead of bullet for each creation 
-        private readonly IGameStateObserver<IGamePauseListener> pauseObserver;
-        private readonly IGameStateObserver<IGameFinishListener> finishObserver;
-
         [Inject]
         public BulletPoolFactory(
             LevelProvider levelProvider,
             BulletFactory bulletFactory,
             DamageComponent damageComponent,
-            BulletLocationObserver bulletLocationObserver,
-            IGameStateObserver<IGamePauseListener> pauseObserver,
-            IGameStateObserver<IGameFinishListener> finishObserver)
+            BulletLocationObserver bulletLocationObserver)
         {
             world = levelProvider.worldContainer;
             disabledContainer = levelProvider.disabledContainerForBullets;
             this.bulletFactory = bulletFactory;
             this.damageComponent = damageComponent;
             this.bulletLocationObserver = bulletLocationObserver;
-            this.pauseObserver = pauseObserver;
-            this.finishObserver = finishObserver;
         }
 
         public ObjectPool<Bullet> Create()
@@ -44,10 +36,6 @@ namespace ShootEmUp
         private Bullet CreateBullet()
         {
             var bullet = bulletFactory.Create();
-
-            pauseObserver.Observe(bullet);
-            finishObserver.Observe(bullet);
-
             return bullet;
         }
 

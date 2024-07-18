@@ -4,16 +4,16 @@ using Zenject;
 
 namespace ShootEmUp
 {
-    public class PauseGameStateHandler : IGameStateObserver<IGamePauseListener>
+    public class PauseGameStateHandler
     {
         private readonly GameStateStorage gameStateStorage;
-        private readonly List<IGamePauseListener> gamePauseListener = new();
-        private readonly List<IGamePauseListener> gameResumeListener = new();
+        private readonly List<IGamePauseListener> gamePauseListener;
 
         [Inject]
-        public PauseGameStateHandler(GameStateStorage gameStateStorage)
+        public PauseGameStateHandler(GameStateStorage gameStateStorage, List<IGamePauseListener> gamePauseListener)
         {
             this.gameStateStorage = gameStateStorage;
+            this.gamePauseListener = gamePauseListener;
         }
 
         public bool IsPauseAllowed()
@@ -36,15 +36,8 @@ namespace ShootEmUp
         public void ResumeGame()
         {
             gameStateStorage.SetCurrentState(GameState.InProgress);
-            gameResumeListener.ForEach(listener => listener.OnGameResume());
+            gamePauseListener.ForEach(listener => listener.OnGameResume());
             Debug.Log("Game resumed!");
         }
-
-        public void Observe(IGamePauseListener listener)
-        {
-            gamePauseListener.Add(listener);
-            gameResumeListener.Add(listener);
-        }
-        
     }
 }

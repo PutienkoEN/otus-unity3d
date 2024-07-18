@@ -4,7 +4,7 @@ using Zenject;
 
 namespace ShootEmUp
 {
-    public class BulletLocationObserver : IFixedTickable
+    public class BulletLocationObserver : IFixedTickable, IGamePauseListener, IGameFinishListener
     {
         public Action<Bullet> LocationExit;
 
@@ -12,6 +12,8 @@ namespace ShootEmUp
 
         private readonly HashSet<Bullet> activeBullets = new();
         private readonly List<Bullet> cacheForActiveBullets = new();
+
+        private bool enabled = true;
 
         [Inject]
         public BulletLocationObserver(LevelBounds levelBounds)
@@ -31,12 +33,45 @@ namespace ShootEmUp
 
         public void FixedTick()
         {
-            cacheForActiveBullets.Clear();
-            cacheForActiveBullets.AddRange(activeBullets);
+            if (!enabled)
+            {
+                return;
+            }
+
+            PutBulletsToCache();
 
             cacheForActiveBullets
                 .FindAll(OutOfBounds)
                 .ForEach(TriggerEventAndUnsubscribe);
+        }
+
+        private void PutBulletsToCache()
+        {
+            cacheForActiveBullets.Clear();
+            cacheForActiveBullets.AddRange(activeBullets);
+        }
+
+        public void OnGamePause()
+        {
+            enabled = false;
+
+            PutBulletsToCache();
+            cacheForActiveBullets
+                .ForEach(bullet => bullet.Stop());
+        }
+
+        public void OnGameResume()
+        {
+            enabled = true;
+
+            PutBulletsToCache();
+            cacheForActiveBullets
+                .ForEach(bullet => bullet.Resume());
+        }
+
+        public void OnGameFinish()
+        {
+            OnGamePause();
         }
 
         private bool OutOfBounds(Bullet bullet)
